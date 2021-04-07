@@ -1,12 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './index.css'
-import App from './App'
-import { Source } from './common/Source'
+import App from './common/App'
 
 ReactDOM.render(
   <React.StrictMode>
-    <Source />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 )
