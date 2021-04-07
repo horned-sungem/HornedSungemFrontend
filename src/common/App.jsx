@@ -1,8 +1,10 @@
-import React, { useMemo } from 'react'
+import React, { useMemo, useState } from 'react'
 import {
+    Route,
     Switch,
     BrowserRouter as Router,
 } from 'react-router-dom';
+import PageIndex from '../pages/PageIndex';
 import { UserContext } from './UserContext';
 
 export default function App() {
@@ -16,7 +18,7 @@ export default function App() {
             <UserContext.Provider value={contextValue}>
                 <Router>
                     <Switch>
-                        {/*<Route component={App} path='/' exact/> */}
+                        <Route component={PageIndex} path='/'/>
                     </Switch>
                 </Router>  
             </UserContext.Provider>
