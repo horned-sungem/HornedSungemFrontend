@@ -1,0 +1,35 @@
+@import "../../styles/_variables"
+
+.button
+    background-color: transparent
+    border: none
+    color: $white
+    font-size: $font-size
+    padding: $font-size/2
+    margin: 0
+    border: $border-width solid transparent
+    box-sizing: border-box
+    border-radius: $font-size/2
+    cursor: pointer
+    font-family: Lato
+    font-style: normal
+    font-weight: normal
+    line-height: 100%
+    transition: all $animation-duration
+
+    &.button--outline
+        background: transparent
+    &:hover
+        transition: all $animation-duration
+
+@each $name, $color in $color-variants
+    .button--#{$name}
+        background-color: $color
+        border-color: $color
+        &.button--outline
+            color: $color
+            &:hover
+                background-color: transparentize($color: $color, $amount: 0.9)
+
+        &:hover
+            background-color: darken($color, 10%)
