@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './styles/Button.sass'
+import './styles/Button.sass';
 
 export const Button = ({ variant, outline, ...props }) => {
     return (
@@ -11,8 +11,7 @@ export const Button = ({ variant, outline, ...props }) => {
                 `button--${variant}`,
                 outline ? 'button--outline' : null,
             ].join(' ')}
-            {...props}
-        >
+            {...props}>
             {props.children}
         </button>
     );

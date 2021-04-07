@@ -7,8 +7,7 @@ export const Logo = () => {
             height='180'
             viewBox='0 0 180 180'
             fill='none'
-            xmlns='http://www.w3.org/2000/svg'
-        >
+            xmlns='http://www.w3.org/2000/svg'>
             <path d='M60 60H120V120L60 60Z' fill='#FF0048' />
             <path d='M180 120L120 120L120 60L180 120Z' fill='#642CA9' />
             <path
@@ -32,4 +31,4 @@ export const Logo = () => {
             />
         </svg>
     );
-}
+};
