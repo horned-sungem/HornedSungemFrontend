@@ -587,6 +587,11 @@ escape-string-regexp@^1.0.5:
   resolved "https://registry.npmjs.org/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz"
   integrity sha1-G2HAViGQqN/2rjuyzwIAyhMLhtQ=
 
+eslint-config-prettier@^8.1.0:
+  version "8.1.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-8.1.0.tgz#4ef1eaf97afe5176e6a75ddfb57c335121abc5a6"
+  integrity sha512-oKMhGv3ihGbCIimCAjqkdzx2Q+jthoqnXSP+d86M9tptwugycmTFdVR4IpLgq2c4SHifbwO90z2fQ8/Aio73yw==
+
 eslint-plugin-react@^7.23.1:
   version "7.23.1"
   resolved "https://registry.npmjs.org/eslint-plugin-react/-/eslint-plugin-react-7.23.1.tgz"
@@ -1670,6 +1675,11 @@ vite-plugin-eslint@^1.1.0:
   dependencies:
     "@rollup/pluginutils" "^4.1.0"
     eslint "^7.18.0"
+
+vite-plugin-fonts@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/vite-plugin-fonts/-/vite-plugin-fonts-0.2.2.tgz#48cda78f5ad36907f3de497fa418ffd2b8f2ca83"
+  integrity sha512-fhzhsrTiuzlDjSO6g5sV5EVIIvbb8lmsaIY6eUTBM4lcF55x40UBpHrcyvNwIhQG211g0lu83XC7oZlkmvdkMA==
 
 vite@^2.1.5:
   version "2.1.5"
