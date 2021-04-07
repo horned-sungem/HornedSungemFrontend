@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import reactRefresh from '@vitejs/plugin-react-refresh';
 import eslintPlugin from 'vite-plugin-eslint';
 import ViteFonts from 'vite-plugin-fonts';
+import { minifyHtml, injectHtml } from 'vite-plugin-html';
 // https://vitejs.dev/config/
 export default defineConfig({
     plugins: [
@@ -22,6 +23,15 @@ export default defineConfig({
                         styles: 'wght@400;700;900',
                     },
                 ],
+            },
+        }),
+        minifyHtml(),
+        injectHtml({
+            injectData: {
+                commitHash: require('child_process')
+                    .execSync('git rev-parse HEAD')
+                    .toString()
+                    .trim(),
             },
         }),
     ],

@@ -24,6 +24,7 @@
     "sass": "^1.32.8",
     "vite": "^2.1.5",
     "vite-plugin-eslint": "^1.1.0",
-    "vite-plugin-fonts": "^0.2.2"
+    "vite-plugin-fonts": "^0.2.2",
+    "vite-plugin-html": "^2.0.6"
   }
 }
