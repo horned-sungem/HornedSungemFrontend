@@ -4,7 +4,7 @@ The frontend for the horned sungmem
 
 ## Installation
 
-Use the package manager [yarn](https://yarnpkg.com/) to install foobar.
+Use the package manager [yarn](https://yarnpkg.com/) to install all dependencies.
 
 ```bash
 yarn
