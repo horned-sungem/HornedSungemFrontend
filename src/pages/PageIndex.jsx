@@ -24,4 +24,4 @@ export const PageIndex = () => {
             </Button>
         </div>
     );
-};
+}

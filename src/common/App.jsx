@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
-import PageIndex from '../pages/PageIndex';
+import { PageIndex } from '../pages/PageIndex';
 import { UserContext } from './UserContext';
 
 export default function App() {
