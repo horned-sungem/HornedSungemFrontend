@@ -1,0 +1,68 @@
+@import '_variables.sass'
+
+body 
+	margin: 0 
+	background-color: $white 
+	font-family: 'Lato', sans-serif 
+	font-style: normal 
+	font-weight: 400 
+	font-size: 16px 
+	line-height: 1.65 
+	color: $black 
+p 
+	margin-bottom: 1.15rem 
+h1,
+h2,
+h3,
+h4,
+h5 
+	margin: 2.75rem 0 1.05rem 
+	font-family: 'Karla', sans-serif 
+	font-weight: 900 
+	line-height: 1.15 
+h1 
+	margin-top: 0 
+	font-size: 3.052em 
+h2 
+	font-size: 2.441em 
+h3 
+	font-size: 1.953em 
+h4 
+	font-size: 1.563em 
+h5 
+	font-size: 1.25em 
+small,
+.text_small 
+	font-size: 0.8em 
+.text--center 
+	text-align: center 
+.text--no-margin 
+	margin: 0 
+// 
+	TABLE 
+		table 
+			border-collapse: collapse 
+			width: 100% 
+	UL 
+		ul 
+			list-style-type: none 
+th,
+td 
+	text-align: left 
+	padding: 8px 
+tr 
+	&:nth-child(even) 
+		background-color: darken($white, 5%) 
+th 
+	background-color: $primary 
+	color: $white 
+ul 
+	li 
+		&:before 
+			content: '\2714' 
+			color: $primary 
+			float: left 
+			width: 1.4em 
+::selection 
+	color: $white 
+	background: $primary 
