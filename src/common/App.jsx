@@ -1,8 +1,8 @@
 import { Box } from 'grommet';
 import React, { useMemo, useState } from 'react';
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
-import { Modules } from '../pages/Modules';
-import { PageIndex } from '../pages/PageIndex';
+import { Modules } from '../modules/Modules';
+import { PageIndex } from '../index/PageIndex';
 import { UserContext } from './UserContext';
 
 import '../styles/main.sass'
