@@ -1,5 +1,4 @@
-import { Box, Button, Nav, Sidebar } from 'grommet';
-import { BladesHorizontal, Chat, Home } from 'grommet-icons';
+import { Box } from 'grommet';
 import React, { useMemo, useState } from 'react';
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 import { Modules } from '../pages/Modules';
@@ -7,6 +6,7 @@ import { PageIndex } from '../pages/PageIndex';
 import { UserContext } from './UserContext';
 
 import '../styles/main.sass'
+import { Navbar } from './Navbar';
 
 export default function App() {
     const [user, setUser] = useState(null);
@@ -17,13 +17,7 @@ export default function App() {
             <UserContext.Provider value={contextValue}>
                 <Box direction='row'>
                 
-                    <Sidebar background='brand'>
-                        <Nav gap='small'>
-                            <Button icon={<Home />} />
-                            <Button icon={<BladesHorizontal />} />
-                            <Button icon={<Chat />} />
-                        </Nav>
-                    </Sidebar>
+                    <Navbar />
                     <Router>
                         <Switch>
                             <Route component={Modules} path='/modules/' />
