@@ -6,6 +6,8 @@ import { Modules } from '../pages/Modules';
 import { PageIndex } from '../pages/PageIndex';
 import { UserContext } from './UserContext';
 
+import '../styles/main.sass'
+
 export default function App() {
     const [user, setUser] = useState(null);
     const contextValue = useMemo(() => ({ user, setUser }), [user, setUser]);
