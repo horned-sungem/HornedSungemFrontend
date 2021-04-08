@@ -1,11 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './common/App';
-import './styles/main.sass';
+import { Grommet } from 'grommet'
+import React from 'react'
+import ReactDOM from 'react-dom'
+import App from './common/App'
 
 ReactDOM.render(
     <React.StrictMode>
-        <App />
+        <Grommet>
+            <App />
+        </Grommet>    
     </React.StrictMode>,
-    document.getElementById('root')
-);
+  document.getElementById('root')
+)
