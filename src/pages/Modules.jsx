@@ -10,40 +10,30 @@ export const Modules = () => {
         fetch('http://127.0.0.1:8000/api/modules/')
             .then((r) => r.json())
             .then((r) => setModules(r))
-    }, 
-    [])
+    }, [])
 
     return (
-        <>
-        <Grid
-            rows={['auto']}
-            columns={['large', 'small']}
-            gap='small'
-            areas={[
-                { name: 'modules', start: [0,0], end: [0,0]},
-                { name: 'description', start: [1,0], end: [1,0]}
-            ]}
-            >
-                <Box gridArea='modules'>
-                    <List
+        <Box
+            direction='row'
+        >
+            <Box gridArea='modules' width='large'>
+                <List
                     primaryKey='name'
                     secondaryKey='cp'
-                    data={modules}>
+                    data={modules}
+                    paginate
+                    step={15}>
                         {module => <div onMouseOver={() => setChosenModule(module)}>{module.name} with {module.cp} CP</div>}    
-                    </List>
-                </Box>
-                <Box gridArea='description'>
-                    <>
-                    {chosenModule !== null ? <>
-                    <h2>{chosenModule.name}</h2>
-                    <p>{chosenModule.self_study}</p>
-                    </> : <div/>}
-                    </>
-                </Box>
-
-
-
-            </Grid>
-        </>
+                </List>
+            </Box>
+            <Box gridArea='description' width='medium'>
+                <>
+                {chosenModule !== null ? <>
+                <h2>{chosenModule.name}</h2>
+                <p>{chosenModule.self_study}</p>
+                </> : <div/>}
+                </>
+            </Box> 
+        </Box>
     );
 };
