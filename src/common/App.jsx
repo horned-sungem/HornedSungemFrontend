@@ -16,9 +16,8 @@ export default function App() {
         <div className='App'>
             <UserContext.Provider value={contextValue}>
                 <Box direction='row'>
-                
-                    <Navbar />
                     <Router>
+                    <Navbar />
                         <Switch>
                             <Route component={Modules} path='/modules/' />
                             <Route component={PageIndex} path='/' />
