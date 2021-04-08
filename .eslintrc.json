@@ -19,12 +19,6 @@
     },
     "rules": {
         "react/prop-types": 0,
-        "no-unused-vars": [
-            "warn",
-            { 
-                "vars": "all",
-                "varsIgnorePattern": "[I]\\w+"
-            }
-        ]
+        "no-unused-vars": "warn"
     }
 }
