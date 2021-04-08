@@ -6,7 +6,7 @@ import { PageIndex } from '../pages/PageIndex';
 import { UserContext } from './UserContext';
 
 import '../styles/main.sass'
-import { Navbar } from './Navbar';
+import { Navbar } from '../navbar/Navbar';
 
 export default function App() {
     const [user, setUser] = useState(null);
