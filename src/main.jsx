@@ -5,7 +5,7 @@ import App from './common/App'
 
 ReactDOM.render(
     <React.StrictMode>
-        <Grommet>
+        <Grommet full>
             <App />
         </Grommet>    
     </React.StrictMode>,
