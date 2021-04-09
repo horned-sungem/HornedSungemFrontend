@@ -3,6 +3,7 @@ import React from 'react';
 import { useHistory } from 'react-router';
 import { ModulesListEntry } from './ModulesListEntry';
 import { CPTag, Tag } from '../common/Tag';
+import { ModuleTags } from '../common/ModuleTags';
 
 export const ModulesList = (props) => {
 
@@ -19,7 +20,7 @@ export const ModulesList = (props) => {
                     {module => 
                         <Box onMouseOver={() => props.setChosenModule(module)} onClick={() => history.push('/module/' + module.id)}>
                             <ModulesListEntry module={module}>
-                                <CPTag>{module.cp}</CPTag>
+                                <ModuleTags module={module} />
                             </ModulesListEntry>
                         </Box>
                         }    

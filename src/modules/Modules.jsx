@@ -1,18 +1,13 @@
 import { Box } from 'grommet';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { ModuleContext } from '../common/ModulesContext';
 import { ModulesDescription } from './ModulesDescription';
 import { ModulesList } from './ModulesList';
 import { ModulesSelector } from './ModulesSelector';
 
 export const Modules = () => {
-    const [modules, setModules] = useState([]);
     const [chosenModule, setChosenModule] = useState(null);
-
-    useEffect(() => {
-        fetch('http://127.0.0.1:8000/api/modules/')
-            .then((r) => r.json())
-            .then((r) => setModules(r))
-    }, [])
+    const modules = useContext(ModuleContext)
 
     return (
         <Box

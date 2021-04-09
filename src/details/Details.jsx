@@ -13,7 +13,7 @@ export const Details = () => {
         fetch('http://127.0.0.1:8000/api/module/' + module_id + '/')
             .then((r) => r.json())
             .then((r) => setLoadedModule(r))
-    }, [])
+    }, [module_id])
 
     return (
         <Box direction='column' basis='full'>
