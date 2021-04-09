@@ -1,15 +1,13 @@
-import { Box, List } from 'grommet';
 import React from 'react';
+import { Box, List } from 'grommet';
 import { useHistory } from 'react-router';
 import { ModulesListEntry } from './ModulesListEntry';
-import { CPTag, Tag } from '../common/Tag';
 import { ModuleTags } from '../common/ModuleTags';
 
 export const ModulesList = (props) => {
-
     let history = useHistory();
 
-    return ( 
+    return (
         <Box width='large'>
             <List
                 primaryKey='name'
@@ -17,13 +15,15 @@ export const ModulesList = (props) => {
                 data={props.modules}
                 paginate
                 step={12}>
-                    {module => 
-                        <Box onMouseOver={() => props.setChosenModule(module)} onClick={() => history.push('/module/' + module.id)}>
-                            <ModulesListEntry module={module}>
-                                <ModuleTags module={module} />
-                            </ModulesListEntry>
-                        </Box>
-                        }    
+                {(module) => (
+                    <Box
+                        onMouseOver={() => props.setChosenModule(module)}
+                        onClick={() => history.push('/module/' + module.id)}>
+                        <ModulesListEntry module={module}>
+                            <ModuleTags module={module} />
+                        </ModulesListEntry>
+                    </Box>
+                )}
             </List>
         </Box>
     );
