@@ -4,18 +4,18 @@ import React from 'react';
 export const DetailsAccordion = ({ module }) => (
     <Box>
         <Accordion multiple>
-            <AccordionPanel label='Lerninhalt'>
-                {module.content}
-            </AccordionPanel>
-            <AccordionPanel label='Qualifikationsziele / Lernergebnisse'>
-                {module.results}
-            </AccordionPanel>
-            <AccordionPanel label='Voraussetzungen für die Teilnahme'>
-                {module.requirements}
-            </AccordionPanel>
-            <AccordionPanel label='Prüfungsform'>
-                {module.exam_form}
-            </AccordionPanel>
+            <LinebreakAcccordionPanel label='Lerninhalt' content={module.content} />
+            <LinebreakAcccordionPanel label='Qualifikationsziele / Lernergebnisse' content={module.results} />
+            <LinebreakAcccordionPanel label='Voraussetzungen für die Teilnahme' content={module.requirements} />
+            <LinebreakAcccordionPanel label='Prüfungsform' content={module.exam_form} />
         </Accordion>
     </Box>
+)
+
+const LinebreakAcccordionPanel = ({ label, content}) => (
+    <AccordionPanel label={label}>
+        <Box style={{whiteSpace: "pre-wrap"}}>
+            {content}
+        </Box>
+    </AccordionPanel>
 )

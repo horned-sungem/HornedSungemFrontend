@@ -13,7 +13,7 @@ export const DetailsRecommender = ({ module_id }) => {
 
     return (
         <Box>
-            Test
+           {"Test \n Test"}
         </Box>
     )
 }

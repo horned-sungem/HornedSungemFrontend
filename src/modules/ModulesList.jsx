@@ -2,7 +2,7 @@ import { Box, List } from 'grommet';
 import React from 'react';
 import { useHistory } from 'react-router';
 import { ModulesListEntry } from './ModulesListEntry';
-import { Tag } from '../common/Tag';
+import { CPTag, Tag } from '../common/Tag';
 
 export const ModulesList = (props) => {
 
@@ -19,7 +19,7 @@ export const ModulesList = (props) => {
                     {module => 
                         <Box onMouseOver={() => props.setChosenModule(module)} onClick={() => history.push('/module/' + module.id)}>
                             <ModulesListEntry module={module}>
-                                <Tag color='#00FF00'>{module.cp} CP</Tag> 
+                                <CPTag>{module.cp}</CPTag>
                             </ModulesListEntry>
                         </Box>
                         }    
