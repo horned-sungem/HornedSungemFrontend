@@ -1,30 +1,33 @@
-import { Box } from 'grommet';
+import { Box, Main } from 'grommet';
 import React, { useMemo, useState } from 'react';
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
-import { Modules } from '../pages/Modules';
-import { PageIndex } from '../pages/PageIndex';
+import { Modules } from '../modules/Modules';
+import { PageIndex } from '../index/PageIndex';
 import { UserContext } from './UserContext';
 
 import '../styles/main.sass'
 import { Navbar } from './Navbar';
+import { Details } from '../details/Details';
 
 export default function App() {
     const [user, setUser] = useState(null);
     const contextValue = useMemo(() => ({ user, setUser }), [user, setUser]);
 
     return (
-        <div className='App'>
+        <Main>
             <UserContext.Provider value={contextValue}>
-                <Box direction='row'>
+                <Box direction='row' basis='full'>
                     <Router>
                     <Navbar />
                         <Switch>
                             <Route component={Modules} path='/modules/' />
+                            <Route component={Details} path='/module/:module_id' />
                             <Route component={PageIndex} path='/' />
                         </Switch>
                     </Router>
                 </Box>
             </UserContext.Provider>
-        </div>
+        </Main>
+       
     );
 }
