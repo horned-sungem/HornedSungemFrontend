@@ -17,7 +17,7 @@ export const ModuleBox = ({ module }) => {
         width='medium'
         justify='center' 
         pad='small'
-        onClick={() => history.push('/module/' + module.id)}
+        onClick={() => history.push('/module/' + module.id.replace('/','_'))}
         elevation='small'
         style={{minHeight: 'auto'}}
         >

@@ -18,7 +18,7 @@ export const DetailsRecommender = ({ module_id }) => {
     return (
         <Box gap='small'>
             {similarModules
-                .filter(module => modules[module].id !== module_id)
+                .filter(module => modules[module].id.replace('/', '_') !== module_id)
                 .map((module, idx) => <ModuleBox key={idx} module={modules[module]} />)}
         </Box>
     )

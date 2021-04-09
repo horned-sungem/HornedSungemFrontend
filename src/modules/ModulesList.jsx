@@ -18,7 +18,7 @@ export const ModulesList = (props) => {
                 paginate
                 step={12}>
                     {module => 
-                        <Box onMouseOver={() => props.setChosenModule(module)} onClick={() => history.push('/module/' + module.id)}>
+                        <Box onMouseOver={() => props.setChosenModule(module)} onClick={() => history.push('/module/' + module.id.replace('/', '_'))}>
                             <ModulesListEntry module={module}>
                                 <ModuleTags module={module} />
                             </ModulesListEntry>
