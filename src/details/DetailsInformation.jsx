@@ -1,18 +1,19 @@
-import { Box } from 'grommet';
+import { Accordion, AccordionPanel, Box } from 'grommet';
 import React from 'react';
+import { DetailsAccordion } from './DetailsAccordion';
+import { DetailsExtendedHeader } from './DetailsExtendedHeader';
+import { DetailsHorizontalElement } from './DetailsHorizontalElement';
+import { DetailsTagHeader } from './DetailsTagHeader';
 
 export const DetailsInformation = ({ module }) => (
     <>{
-        module !== null ? <Box direction='column' border='between'>
-        <Box direction='row'>
-            {module.cycle}, {module.cp}, {module.id}
-        </Box>
-        <Box direction='row' border='between'>
-            <Box direction='column' justify='center'>
-                Test
-            </Box>
-        </Box>
-    </Box> : <></>
+        module !== null ? 
+        <Box direction='column' border='between' gap='small' pad='small' basis='1/2' height={{min: 'auto'}}>
+            <DetailsTagHeader module={module} />
+            <DetailsExtendedHeader module={module} />
+            <DetailsAccordion module={module} />
+        </Box> 
+        : <></>
     }</>
     
 )

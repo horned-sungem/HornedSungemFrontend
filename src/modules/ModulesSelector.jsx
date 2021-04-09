@@ -3,7 +3,7 @@ import React from 'react';
 
 export const ModulesSelector = (props) => {
     return (
-        <Box>
+        <Box height={{min: 'auto'}}>
             CP <TextInput />
             Name <TextInput />
         </Box>
