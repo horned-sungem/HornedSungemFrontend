@@ -2,6 +2,7 @@ import { Box, Header } from 'grommet';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { DetailsInformation } from './DetailsInformation';
+import { DetailsRecommender } from './DetailsRecommender';
 
 export const Details = () => {
     let { module_id } = useParams();
@@ -21,9 +22,7 @@ export const Details = () => {
             </Header>
             <Box direction='row' border='between' gap='small' basis='full'>
                 <DetailsInformation module={loadedModule} />
-                <Box>
-                    Hier so b
-                </Box>
+                <DetailsRecommender module_id={module_id} />
             </Box>
         </Box>
     )
