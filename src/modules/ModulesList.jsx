@@ -18,7 +18,11 @@ export const ModulesList = (props) => {
                 {(module) => (
                     <Box
                         onMouseOver={() => props.setChosenModule(module)}
-                        onClick={() => history.push('/module/' + module.id)}>
+                        onClick={() =>
+                            history.push(
+                                '/module/' + module.id.replace('/', '_')
+                            )
+                        }>
                         <ModulesListEntry module={module}>
                             <ModuleTags module={module} />
                         </ModulesListEntry>
