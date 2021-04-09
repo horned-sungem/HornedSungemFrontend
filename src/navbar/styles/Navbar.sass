@@ -1,23 +1,32 @@
 @import "../../styles/_variables"
 
-.navbar__item
-    font-size: $font-size * 2
-    width: $font-size * 3
-    height: $font-size * 3
-    color: $white
-    display: flex
-    justify-content: center
-    align-items: center
-    cursor: pointer
-    border-radius: 0 $font-size $font-size 0
-    transition: all $animation-duration
+div.navbar
 
-    &:hover
-        color: $secondary
-        fill: $secondary !important
-        background-color: $white
-        transition: all $animation-duration
-        a
-            color: $secondary
+    min-width: $font-size * 4
+    
+    padding-left: 0
+    padding-right: $font-size / 2
+
+    .navbar__item
+        display: flex
+        justify-content: center
+        align-items: center
+        
+        min-width: $font-size * 3
+        height: $font-size * 3
+
+        font-size: $font-size * 2
+        color: $white
+        border-radius: 0 $font-size $font-size 0
+
+        cursor: pointer
+
+        &:hover
+            background: #FFF
+
+            path
+                filter: brightness(0) saturate(100%) invert(34%) sepia(42%) saturate(5475%) hue-rotate(246deg) brightness(91%) contrast(88%) //workaround to make svg color = primnary color
+            a
+                color: $secondary
 
     

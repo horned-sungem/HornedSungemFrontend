@@ -4,7 +4,7 @@ import { BladesHorizontal, Chat, Home } from 'grommet-icons';
 import { NavbarItem } from './NavbarItem';
 
 export const Navbar = () => (
-    <Sidebar background='brand'>
+    <Sidebar className='navbar' background='brand'>
         <Nav gap='small'>
             <NavbarItem to='/'>
                 <Home />
