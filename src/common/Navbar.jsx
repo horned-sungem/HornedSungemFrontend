@@ -6,9 +6,9 @@ import { NavLink } from 'react-router-dom';
 export const Navbar = () => (
     <Sidebar background='brand'>
         <Nav gap='small'>
-            <Button as={NavLink} to='/' icon={<Home />}/> 
-            <Button as={NavLink} to='/modules/' icon={<BladesHorizontal />}/> 
-            <Button as={NavLink} to='/modules/' icon={<Chat />}/> 
+            <Button as={NavLink} to='/' icon={<Home />} hoverIndicator /> 
+            <Button as={NavLink} to='/modules/' icon={<BladesHorizontal />} hoverIndicator /> 
+            <Button as={NavLink} to='/modules/' icon={<Chat />} hoverIndicator /> 
         </Nav>
     </Sidebar>
 )
