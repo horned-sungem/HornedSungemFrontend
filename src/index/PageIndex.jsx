@@ -2,11 +2,13 @@ import React from 'react';
 import { Logo } from '../common/Logo';
 import { Button } from '../common/Button';
 
+import './PageIndex.sass'
+
 export const PageIndex = () => {
     return (
         <div className='page-index'>
-            <Logo />
-            <div>
+            <div className='content'>
+                <Logo />
                 <h1 className='text--center'>Sungem</h1>
                 <p className='text--center text--no-margin'>
                     Hello wir sind 3 (maybe bald mehr) keks die so Modulstuff
@@ -17,11 +19,11 @@ export const PageIndex = () => {
                     Materials Google Design stibitzt.<br></br>
                     Und eventuell par links zu den pages auf der Sidebar.
                 </p>
+                <Button variant='primary'>Empfohlene Module ansehen</Button>
+                <Button variant='primary' outline>
+                    Module durchsuchen
+                </Button>
             </div>
-            <Button variant='primary'>Empfohlene Module ansehen</Button>
-            <Button variant='primary' outline>
-                Module durchsuchen
-            </Button>
         </div>
     );
 }
