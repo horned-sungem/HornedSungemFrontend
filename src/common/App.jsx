@@ -12,7 +12,7 @@ import { Navbar } from '../navbar/Navbar';
 import { ModuleContext } from './ModulesContext';
 
 export default function App() {
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState({});
     const contextValue = useMemo(() => ({ user, setUser }), [user, setUser]);
     const [modules, setModules] = useState([])
 
