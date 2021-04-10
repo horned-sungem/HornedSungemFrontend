@@ -1,6 +1,6 @@
 import React from 'react';
 import { Nav, Sidebar } from 'grommet';
-import { BladesHorizontal, Chat, Home } from 'grommet-icons';
+import { BladesHorizontal, BladesVertical, Chat, Home, Resources } from 'grommet-icons';
 import { NavbarItem } from './NavbarItem';
 import { LoginElement } from './LoginElement';
 import { LogoutElement } from './LogoutElement';
@@ -17,11 +17,11 @@ export const Navbar = () => {
                     <Home />
                 </NavbarItem>
                 <NavbarItem to='/modules/'>
-                    <BladesHorizontal />
+                    <BladesVertical />
                 </NavbarItem>
-                <NavbarItem to='/recommender/'>
-                    <Chat />
-                </NavbarItem>
+                {('user' in cookies) && <NavbarItem to='/recommender/'>
+                    <Resources />
+                </NavbarItem>}
             </Nav>
         </Sidebar>
     );

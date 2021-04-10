@@ -1,10 +1,12 @@
 import { Box, Heading } from 'grommet';
 import React, { useState } from 'react';
 import { LoginForm } from './LoginForm';
+import { RegisterForm } from './RegisterForm';
 
 export const LoginModal = ({ setLayerOpen }) => {
 
-    const [error, setError] = useState(false)
+    const [error, setError] = useState(false);
+    const [inRegister, setInRegister] = useState(false);
     
     // TODO: Change the jiggle on the first box to another type of animation since Box animations are forced to be controlled (I mean it works but I don't like that warning :( )
 
@@ -14,9 +16,10 @@ export const LoginModal = ({ setLayerOpen }) => {
                 <Heading background='brand'>Login</Heading>
             </Box>
             <Box pad='medium'>
-                
-                <LoginForm setError={setError} setLayerOpen={setLayerOpen}/>
-                
+                {inRegister 
+                    ? <RegisterForm /> 
+                    : <LoginForm setError={setError} setLayerOpen={setLayerOpen} onRegister={() => setInRegister(true)}/>
+                }
             </Box>
         </Box>
     )

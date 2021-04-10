@@ -3,9 +3,8 @@ import React, { useState } from 'react';
 import { useCookies } from 'react-cookie';
 
 
-export const LoginForm = ({ setError, setLayerOpen }) => {
+export const LoginForm = ({ setError, setLayerOpen, onRegister }) => {
 
-    const [formValue, setFormValue] = useState({});
     const [wrongPassword, setWrongPassword] = useState(false);
     const [cookies, setCookies] = useCookies(['user']);
 
@@ -57,7 +56,7 @@ export const LoginForm = ({ setError, setLayerOpen }) => {
             </FormField>
             <Box direction='row' gap='medium' justify='center'>
                 <Button type='submit' primary label='Login' />
-                <Button type='button' label='Register' />
+                <Button type='button' label='Register' onClick={onRegister}/>
             </Box>
         </Form>
     )

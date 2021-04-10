@@ -9,6 +9,7 @@ export const ReacommenderPage = () => {
     const [recommendedModules, setRecommendedModules] = useState([]);
 
     useEffect(() => {
+        if (!('user' in cookies)) return;
         fetch('http://127.0.0.1:8000/api/recommend/', {
             credentials: 'include',
             headers: new Headers({
@@ -18,7 +19,9 @@ export const ReacommenderPage = () => {
         })
         .then(r => r.json())
         .then(setRecommendedModules)
-    })
+    }, [cookies])
+
+    console.log('cookies', cookies)
 
     return (
         <>
@@ -38,7 +41,9 @@ export const ReacommenderPage = () => {
                     </Box>
                 </Box>
             </Box> :
-            <div>User not logged in</div>}
+            <Box justify='center' width='full' align='center'>
+                You need to log in to access this resource.
+            </Box>}
         </>
     )
 }
