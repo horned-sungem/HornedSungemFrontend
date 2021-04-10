@@ -9,6 +9,7 @@ import '../styles/main.sass'
 import { Details } from '../details/Details';
 import { Navbar } from '../navbar/Navbar';
 import { ModuleContext } from './ModulesContext';
+import { ReacommenderPage } from '../recommender/RecommenderPage';
 
 export default function App() {
     const [modules, setModules] = useState([])
@@ -28,6 +29,7 @@ export default function App() {
                         <Switch>
                             <Route component={PageModules} path='/modules/' />
                             <Route component={Details} path='/module/:module_id' />
+                            <Route component={ReacommenderPage} path='/recommender/' />
                             <Route component={PageIndex} path='/' />
                         </Switch>
                     </Router>
