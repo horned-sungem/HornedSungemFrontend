@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, List } from 'grommet';
+import { Box, InfiniteScroll } from 'grommet';
 import { useHistory } from 'react-router';
 import { ModulesListEntry } from './ModulesListEntry';
 import { ModuleTags } from '../common/ModuleTags';
@@ -8,16 +8,16 @@ export const ModulesList = (props) => {
     let history = useHistory();
 
     return (
-        <Box width='large'>
-            <List
-                primaryKey='name'
-                secondaryKey='cp'
-                data={props.modules}
-                paginate
-                step={12}>
+        <Box width='large' overflow='auto'>
+            <InfiniteScroll items={Object.values(props.modules)} step={10}>
                 {(module) => (
                     <Box
+                        flex={false}
                         onMouseOver={() => props.setChosenModule(module)}
+                        height='xsmall'
+                        className='list__item'
+                        justify='center'
+                        border='bottom'
                         onClick={() =>
                             history.push(
                                 '/module/' + module.id.replace('/', '_')
@@ -28,7 +28,7 @@ export const ModulesList = (props) => {
                         </ModulesListEntry>
                     </Box>
                 )}
-            </List>
+            </InfiniteScroll>
         </Box>
     );
 };
