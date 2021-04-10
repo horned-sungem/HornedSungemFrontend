@@ -22,15 +22,16 @@ export const DetailsRate = ({ module_id }) => {
                 })
             })
             .then(r => r.json())
-            .then(r => r.filter(pair => pair[0].id == module_id))
+            .then(r => r.filter(pair => pair[0].id == module_id.replace('_', '/')))
             .then(r => {
                 if (r.length > 0) {
                     setRating(r[0][1])
                 } else {
                     setRating(0)
                 }
+                console.log(module_id)
             })
-        }, [cookies]
+        }, [cookies, module_id]
     )
 
     useEffect(
@@ -49,7 +50,7 @@ export const DetailsRate = ({ module_id }) => {
                         module: module_id
                     })
                 })
-            }, 2000)
+            }, 500)
             return () => {
                 clearTimeout(timeout) // Literally no idea how or why this works but it seems to debounce the rating and keep our backend alive
             }
