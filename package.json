@@ -9,6 +9,7 @@
     "prettier": "prettier --write ."
   },
   "dependencies": {
+    "normalize-css": "^2.3.1",
     "react": "^17.0.0",
     "react-cookie": "^4.0.3",
     "react-dom": "^17.0.0",
