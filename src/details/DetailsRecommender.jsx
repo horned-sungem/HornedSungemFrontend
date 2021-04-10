@@ -1,12 +1,15 @@
 import { Box } from 'grommet'
 import React, { useContext, useEffect, useState } from 'react'
+import { useCookies } from 'react-cookie';
 import { ModuleBox } from '../common/ModuleBox';
 import { ModuleContext } from '../common/ModulesContext';
+import { DetailsRate } from './DetailsRate';
 
 export const DetailsRecommender = ({ module_id }) => {
 
     const [similarModules, setSimilarModules] = useState([]);
     const modules = useContext(ModuleContext);
+    const [cookies] = useCookies(['user']);
 
     useEffect(() => {
         setSimilarModules([]);
@@ -16,10 +19,17 @@ export const DetailsRecommender = ({ module_id }) => {
     }, [module_id])
 
     return (
-        <Box gap='small'>
-            {similarModules
-                .filter(module => modules[module].id.replace('/', '_') !== module_id)
-                .map((module, idx) => <ModuleBox key={idx} module={modules[module]} />)}
-        </Box>
+        <>{
+            modules.length > 0 &&
+                <Box direction='column' border='between' gap='small'>
+                    {cookies.user != null && <DetailsRate module_id={module_id}/>}
+                    <Box gap='small'>
+                        {similarModules
+                            .filter(module => modules[module].id.replace('/', '_') !== module_id)
+                            .map((module, idx) => <ModuleBox key={idx} module={modules[module]} />)}
+                    </Box>
+                </Box>
+        } </>
+        
     )
 }

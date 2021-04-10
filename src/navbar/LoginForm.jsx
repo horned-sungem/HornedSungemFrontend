@@ -11,8 +11,7 @@ export const LoginForm = ({ setError, setLayerOpen }) => {
 
     return (
         <Form
-            value={formValue}
-            onChange={newVal => {setFormValue(newVal); setWrongPassword(false)}}
+            onChange={() => {setWrongPassword(false)}}
             onSubmit={formValue => { 
                 fetch('http://127.0.0.1:8000/api/login/',
                     {
@@ -32,9 +31,9 @@ export const LoginForm = ({ setError, setLayerOpen }) => {
                                 username: formValue.value.username,
                                 token: r.token
                             }), {
-                                maxAge: 60,
+                                maxAge: 60*60*24*7,
                                 secure: true
-                            })
+                            });
                             setLayerOpen(false);
                         } else {
                             setError(true);
@@ -45,8 +44,6 @@ export const LoginForm = ({ setError, setLayerOpen }) => {
                             )
                         }
                     })
-
-                console.log(formValue) 
                 }}>
             <FormField name='username'
                 required>

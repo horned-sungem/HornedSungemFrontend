@@ -7,8 +7,6 @@ export const LoginElement = () => {
 
     const [layerOpen, setLayerOpen] = useState(false);
 
-    // @Lene alda räum diese scheiß Datei auf uff
-
     return (
         <Box>
             <Button 
