@@ -2,6 +2,7 @@ import { Box, Button, Heading, Layer } from 'grommet';
 import { Logout } from 'grommet-icons';
 import React, { useContext, useState } from 'react';
 import { UserContext } from '../common/UserContext';
+import { LogoutModal } from './LogoutModal';
 
 export const LogoutElement = () => {
 
@@ -27,19 +28,7 @@ export const LogoutElement = () => {
                     className='login-modal-parent'
                 >
 
-                    <Box width='medium' gap='small' className='login-modal' >
-                        <Box background='brand' pad={{horizontal: 'medium', top: 'medium'}}>
-                            <Heading background='brand'>Logout?</Heading>
-                        </Box>
-                        <Box pad='medium'>
-                            
-                            <Box direction='row' gap='medium' justify='center'>
-                                <Button type='submit' primary label='Confirm' onClick={() => {setUser({}); setLayerOpen(false)}}/>
-                                <Button type='button' label='Cancel' onClick={() => setLayerOpen(false)} />
-                            </Box>
-                            
-                        </Box>
-                    </Box>
+                   <LogoutModal setLayerOpen={setLayerOpen} /> 
                 </Layer> }
             </Box>
         </Box>
