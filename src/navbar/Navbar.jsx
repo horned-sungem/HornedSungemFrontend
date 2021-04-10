@@ -19,7 +19,7 @@ export const Navbar = () => {
                 <NavbarItem to='/modules/'>
                     <BladesHorizontal />
                 </NavbarItem>
-                <NavbarItem to='/temp/'>
+                <NavbarItem to='/recommender/'>
                     <Chat />
                 </NavbarItem>
             </Nav>
