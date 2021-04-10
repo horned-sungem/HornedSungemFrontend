@@ -1,13 +1,11 @@
-import { Box, Button, Heading, Layer } from 'grommet';
+import { Box, Button, Layer } from 'grommet';
 import { Logout } from 'grommet-icons';
-import React, { useContext, useState } from 'react';
-import { UserContext } from '../common/UserContext';
+import React, { useState } from 'react';
 import { LogoutModal } from './LogoutModal';
 
 export const LogoutElement = () => {
 
     const [layerOpen, setLayerOpen] = useState(false);
-    const { setUser } = useContext(UserContext);
 
     return (
         <Box>

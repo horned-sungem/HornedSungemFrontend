@@ -1,10 +1,10 @@
 import { Box, Button, Heading } from 'grommet';
-import React, { useContext } from 'react';
-import { UserContext } from '../common/UserContext';
+import React from 'react';
+import { useCookies } from 'react-cookie';
 
 export const LogoutModal = ({ setLayerOpen }) => {
 
-    const { setUser } = useContext(UserContext);
+    const [cookies, setCookies, removeCookies] = useCookies(['user'])
 
     return (
         <Box width='medium' gap='small' className='login-modal' >
@@ -14,7 +14,7 @@ export const LogoutModal = ({ setLayerOpen }) => {
             <Box pad='medium'>
                 
                 <Box direction='row' gap='medium' justify='center'>
-                    <Button type='submit' primary label='Confirm' onClick={() => {setUser({}); setLayerOpen(false)}}/>
+                    <Button type='submit' primary label='Confirm' onClick={() => {removeCookies('user'); setLayerOpen(false)}}/>
                     <Button type='button' label='Cancel' onClick={() => setLayerOpen(false)} />
                 </Box>
                 

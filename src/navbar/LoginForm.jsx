@@ -1,17 +1,18 @@
 import { Box, Button, Form, FormField, TextInput } from 'grommet';
-import React, { useContext, useState } from 'react';
-import { UserContext } from '../common/UserContext';
+import React, { useState } from 'react';
+import { useCookies } from 'react-cookie';
+
 
 export const LoginForm = ({ setError, setLayerOpen }) => {
 
-    
-    const { setUser } = useContext(UserContext);
     const [formValue, setFormValue] = useState({});
+    const [wrongPassword, setWrongPassword] = useState(false);
+    const [cookies, setCookies] = useCookies(['user']);
 
     return (
         <Form
             value={formValue}
-            onChange={newVal => setFormValue(newVal)}
+            onChange={newVal => {setFormValue(newVal); setWrongPassword(false)}}
             onSubmit={formValue => { 
                 fetch('http://127.0.0.1:8000/api/login/',
                     {
@@ -27,13 +28,17 @@ export const LoginForm = ({ setError, setLayerOpen }) => {
                     .then(r => r.json())
                     .then(r => {
                         if ('token' in r) {
-                            setUser({
+                            setCookies('user', ({
                                 username: formValue.value.username,
                                 token: r.token
-                            });
+                            }), {
+                                maxAge: 60,
+                                secure: true
+                            })
                             setLayerOpen(false);
                         } else {
                             setError(true);
+                            setWrongPassword(true);
                             setTimeout(
                                 () => setError(false),
                                 350
@@ -43,10 +48,14 @@ export const LoginForm = ({ setError, setLayerOpen }) => {
 
                 console.log(formValue) 
                 }}>
-            <FormField name='username'>
+            <FormField name='username'
+                required>
                 <TextInput id='name-input-field' name='username' placeholder='Username'/>
             </FormField>
-            <FormField name='password'>
+            <FormField 
+                name='password' 
+                error={wrongPassword && 'Wrong username or password'}
+                required>
                 <TextInput type='password' id='pw-input-field' name='password' placeholder='Password'/>
             </FormField>
             <Box direction='row' gap='medium' justify='center'>
