@@ -1,7 +1,7 @@
 import { Box, Main } from 'grommet';
 import React, { useEffect, useMemo, useState } from 'react';
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
-import { Modules } from '../modules/Modules';
+import { PageModules } from '../modules/PageModules';
 import { PageIndex } from '../index/PageIndex';
 import { UserContext } from './UserContext';
 
@@ -30,7 +30,7 @@ export default function App() {
                         <Router>
                         <Navbar />
                             <Switch>
-                                <Route component={Modules} path='/modules/' />
+                                <Route component={PageModules} path='/modules/' />
                                 <Route component={Details} path='/module/:module_id' />
                                 <Route component={PageIndex} path='/' />
                             </Switch>

@@ -2,8 +2,8 @@ import { Box } from 'grommet';
 import React from 'react';
 
 export const ModulesListEntry = ({ children, module }) => (
-    <Box direction='row' gap='large' justify='between'>
-        <Box>
+    <Box direction='row' gap='none' justify='between'>
+        <Box width='medium'>
             {module.name}
         </Box>
         <Box>

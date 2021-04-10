@@ -1,11 +1,11 @@
 import { Box } from 'grommet';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { ModuleContext } from '../common/ModulesContext';
 import { ModulesDescription } from './ModulesDescription';
 import { ModulesList } from './ModulesList';
 import { ModulesSelector } from './ModulesSelector';
 
-export const Modules = () => {
+export const PageModules = () => {
     const [chosenModule, setChosenModule] = useState(null);
     const modules = useContext(ModuleContext)
 
