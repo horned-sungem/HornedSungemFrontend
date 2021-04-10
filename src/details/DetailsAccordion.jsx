@@ -15,7 +15,7 @@ export const DetailsAccordion = ({ module }) => (
 const LinebreakAcccordionPanel = ({ label, content}) => (
     <AccordionPanel label={label}>
         <Box style={{whiteSpace: "pre-wrap"}}>
-            {content}
+            {content ? content : <Box style={{color: '#555'}}><i>this value is not set.</i></Box>}
         </Box>
     </AccordionPanel>
 )

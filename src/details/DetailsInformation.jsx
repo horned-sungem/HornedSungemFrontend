@@ -16,5 +16,4 @@ export const DetailsInformation = ({ module }) => (
         </Box> 
         : <></>
     }</>
-    
 )
