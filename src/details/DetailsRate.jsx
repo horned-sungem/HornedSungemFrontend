@@ -1,42 +1,34 @@
 import { RangeInput } from 'grommet';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
 import Config from '../common/Config';
+import { VotesContext } from '../common/VotesContext';
 
-export const DetailsRate = ({ module_id, initial_rating }) => {
+export const DetailsRate = ({ module_id }) => {
 
     const [cookies] = useCookies(['user'])
-    const [rating, setRating] = useState(initial_rating)
-
+    const [rating, setRating] = useState(null)
+    const { votes } = useContext(VotesContext)
     var timeout;
 
     useEffect(
         () => {
-            if (!('user' in cookies)) return;
             
-            console.log(cookies.user);
-            fetch(Config.url + 'api/votes/', {
-                credentials: 'include',
-                headers: new Headers({
-                    'Authorization': 'Token '+cookies.user.token,
-                    'Content-Type': 'application/json'
-                })
-            })
-            .then(r => r.json())
-            .then(r => r.filter(pair => pair[0].id == module_id.replace('_', '/')))
-            .then(r => {
-                if (r.length > 0) {
-                    setRating(r[0][1])
-                } else {
-                    setRating(0)
-                }
-                console.log(module_id)
-            })
-        }, [cookies, module_id]
+            const optional_module = votes.filter(pair => pair[0].id == module_id.replace('_', '/'))
+            
+            if (optional_module.length > 0) {
+                setRating(optional_module[0][1])
+            } else {
+                setRating(0)
+            }
+        
+        }, [cookies, module_id, votes]
     )
 
     useEffect(
         () => {
+            if (rating === null) return;
+            if (rating === 0 && votes.length === 0 ) return;
             if (!('user' in cookies)) return;
             timeout = setTimeout(() => {
                 fetch(Config.url + 'api/vote/', {

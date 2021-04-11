@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { useContext  } from 'react';
 import { Box, InfiniteScroll } from 'grommet';
 import { useHistory } from 'react-router';
 import { ModulesListEntry } from './ModulesListEntry';
 import { ModuleTags } from '../common/ModuleTags';
+import { VotesContext } from '../common/VotesContext';
+import './styles/Modules.sass'
 
 export const ModulesList = (props) => {
+
     let history = useHistory();
+
+    const { votes } = useContext(VotesContext);
+
+    const vote_ids = votes.map(vote => vote[0].id)
+    console.log(vote_ids)
 
     return (
         <Box width='large' overflow='auto'>
@@ -16,7 +24,7 @@ export const ModulesList = (props) => {
                         flex={false}
                         onMouseOver={() => props.setChosenModule(module)}
                         height='xsmall'
-                        className='list__item'
+                        className={'list__item' + (vote_ids.includes(module.id) ? ' list__item--voted' : '')}
                         justify='center'
                         border='bottom'
                         onClick={() =>

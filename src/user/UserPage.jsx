@@ -1,26 +1,14 @@
 import { Box, Heading } from 'grommet'
-import React, { useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import { useCookies } from 'react-cookie'
-import Config from '../common/Config'
+import { VotesContext } from '../common/VotesContext'
 import { DetailsRate } from '../details/DetailsRate'
 
 export const UserPage = () => {
 
-    const [votes, setVotes] = useState([])
+    //const [votes, setVotes] = useState([])
     const [cookies] = useCookies(['user'])
-
-    useEffect(() => {
-        if (!('user' in cookies)) return;
-        fetch(Config.url + 'api/votes/', {
-            credentials: 'include',
-            headers: new Headers({
-                'Authorization': 'Token '+cookies.user.token,
-                'Content-Type': 'application/json'
-            })
-        })
-        .then(r => r.json())
-        .then(setVotes)
-    }, [cookies])
+    const { votes } = useContext(VotesContext)
     
     return (
         <>
@@ -34,7 +22,7 @@ export const UserPage = () => {
                             <Box key={idx} direction='row'>
                                 <Box width='large'>{m[0].name}</Box>
                                 <Box width='medium'>
-                                <DetailsRate module_id={m[0].id} initial_rating={m[1]} />
+                                <DetailsRate module_id={m[0].id} />
                                 </Box>
                             </Box>)}
                     </Box>
