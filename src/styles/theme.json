@@ -12,6 +12,24 @@
             "accent-1": {
                 "dark": "#ff0048",
                 "light": "#ff0048"
+            },
+            "control": "brand",
+            "active-background": "background-contrast",
+            "active-text": "text-strong",
+            "selected-background": "brand",
+            "selected-text": "text-strong",
+            "status-critical": "#ff0000",
+            "status-warning": "#f56600",
+            "status-ok": "#009934",
+            "status-unknown": "#CCCCCC",
+            "status-disabled": "#CCCCCC",
+            "graph-0": "brand",
+            "graph-1": "status-warning",
+            "focus": "brand"
+        },
+        "focus": {
+            "shadow": {
+                "size": "1px"
             }
         }
     },
