@@ -13,18 +13,24 @@ export const Details = () => {
     useEffect(() => {
         fetch(Config.url + 'api/module/' + module_id + '/')
             .then((r) => r.json())
-            .then((r) => setLoadedModule(r))
-    }, [module_id])
+            .then((r) => setLoadedModule(r));
+    }, [module_id]);
 
     return (
         <Box direction='column' basis='full'>
-            <Header background='brand'>
-                {loadedModule!==null ? <h3>{ loadedModule.name } - {loadedModule.id}</h3> : <h3>Loading</h3>}
+            <Header background='brand' pad='small'>
+                {loadedModule !== null ? (
+                    <h3 style={{ margin: '1rem 0' }}>
+                        {loadedModule.name} - {loadedModule.id}
+                    </h3>
+                ) : (
+                    <h3 style={{ margin: '1rem 0' }}>Loading</h3>
+                )}
             </Header>
             <Box direction='row' border='between' gap='small' basis='full'>
                 <DetailsInformation module={loadedModule} />
                 <DetailsRecommender module_id={module_id} />
             </Box>
         </Box>
-    )
-}
+    );
+};
