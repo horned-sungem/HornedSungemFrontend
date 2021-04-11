@@ -8,20 +8,23 @@ export const DetailsRate = ({ module_id }) => {
 
     const [cookies] = useCookies(['user'])
     const [rating, setRating] = useState(null)
-    const { votes } = useContext(VotesContext)
+    const { votes, setVotes } = useContext(VotesContext)
+    const slash_id = module_id.replace('_', '/')
     var timeout;
 
     useEffect(
         () => {
             
-            const optional_module = votes.filter(pair => pair[0].id == module_id.replace('_', '/'))
+            if (rating !== null) return;
+
+            const optional_module = votes.filter(pair => pair[0].id == slash_id)
             
             if (optional_module.length > 0) {
                 setRating(optional_module[0][1])
             } else {
                 setRating(0)
             }
-        
+
         }, [cookies, module_id, votes]
     )
 
@@ -40,9 +43,18 @@ export const DetailsRate = ({ module_id }) => {
                     }),
                     body: JSON.stringify({
                         score: rating,
-                        module: module_id
+                        module: slash_id
                     })
                 })
+                .then(r => r.json())
+                .then(
+                    (module) => {
+                        setVotes(votes => 
+                            rating != 0 ?
+                            [...votes.filter(vote => vote[0].id !== slash_id), [module, parseInt(rating)] ]
+                            : votes.filter(vote => vote[0].id !== slash_id) )
+                    }
+                )
             }, 500)
             return () => {
                 clearTimeout(timeout) // Literally no idea how or why this works but it seems to debounce the rating and keep our backend alive

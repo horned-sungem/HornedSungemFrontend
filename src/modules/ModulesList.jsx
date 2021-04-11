@@ -13,7 +13,6 @@ export const ModulesList = (props) => {
     const { votes } = useContext(VotesContext);
 
     const vote_ids = votes.map(vote => vote[0].id)
-    console.log(vote_ids)
 
     return (
         <Box width='large' overflow='auto'>

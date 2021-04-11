@@ -22,8 +22,6 @@ export const ReacommenderPage = () => {
         .then(setRecommendedModules)
     }, [cookies])
 
-    console.log('cookies', cookies)
-
     return (
         <>
         {'user' in cookies ?

@@ -49,7 +49,7 @@ export default function App() {
             <ModuleContext.Provider value={modules}>
                 <VotesContext.Provider value={voteValue}>
                     <Box direction='row' basis='full'>
-                        <Router>
+                        <Router basename={import.meta.env.BASE_URL}>
                         <Navbar />
                             <Switch>
                                 <Route component={PageModules} path='/modules/' />
