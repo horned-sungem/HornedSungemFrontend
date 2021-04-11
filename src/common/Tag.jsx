@@ -1,21 +1,28 @@
 import { Box, Text } from 'grommet';
 import React from 'react';
 
-export const Tag = ({ children, label }) => (
+export const Tag = ({ children, suffix, prefix }) => (
     <Box round align='center' direction='column' pad='xsmall' alignSelf='start'>
+        {prefix && (
+            <Text color='brand' size='small'>
+                {prefix}
+            </Text>
+        )}
         <Text weight='bold' color='brand' size='large'>
             {children}
         </Text>
-        <Text color='brand' size='small'>
-            {label}
-        </Text>
+        {suffix && (
+            <Text color='brand' size='small'>
+                {suffix}
+            </Text>
+        )}
     </Box>
 );
 
 export const CPTag = ({ children }) => {
-    return <Tag label='CP'>{children}</Tag>;
+    return <Tag suffix='CP'>{children}</Tag>;
 };
 
 export const SemesterTag = ({ children }) => {
-    return <Tag label='Semester'>{children}</Tag>;
+    return <Tag suffix='Semester'>{children}</Tag>;
 };
