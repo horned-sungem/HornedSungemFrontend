@@ -4,7 +4,7 @@ import { useCookies } from 'react-cookie';
 
 export const LogoutModal = ({ setLayerOpen }) => {
 
-    const [cookies, setCookies, removeCookies] = useCookies(['user'])
+    const [,, removeCookies] = useCookies(['user'])
 
     return (
         <Box width='medium' gap='small' className='login-modal' >

@@ -13,7 +13,7 @@ export const ModulesSelector = ({ setModuleFilter }) => {
         const filters = [
             module => (!minCp) || module.cp >= parseInt(minCp),
             module => (!maxCp) || module.cp <= parseInt(maxCp),
-            module => module.name.includes(searchString)
+            module => module.name.toLowerCase().includes(searchString.toLowerCase())
         ]
 
         const moduleFilter = (module) => !(filters.map((filt) => filt(module)).includes(false))

@@ -3,10 +3,10 @@ import React, { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
 import Config from '../common/Config';
 
-export const DetailsRate = ({ module_id }) => {
+export const DetailsRate = ({ module_id, initial_rating }) => {
 
     const [cookies] = useCookies(['user'])
-    const [rating, setRating] = useState(null)
+    const [rating, setRating] = useState(initial_rating)
 
     var timeout;
 

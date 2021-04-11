@@ -7,7 +7,7 @@ import Config from '../common/Config';
 export const LoginForm = ({ setError, setLayerOpen, onRegister }) => {
 
     const [wrongPassword, setWrongPassword] = useState(false);
-    const [cookies, setCookies] = useCookies(['user']);
+    const [, setCookies] = useCookies(['user']);
 
     return (
         <Form

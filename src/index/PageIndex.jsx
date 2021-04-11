@@ -4,7 +4,6 @@ import { Button } from '../common/Button';
 
 import './PageIndex.sass'
 import { Link } from 'react-router-dom';
-import { LoginElement } from '../navbar/LoginElement';
 import { Box, Layer } from 'grommet';
 import { LoginModal } from '../navbar/LoginModal';
 import { useCookies } from 'react-cookie';

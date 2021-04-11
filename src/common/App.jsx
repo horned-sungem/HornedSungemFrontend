@@ -11,6 +11,7 @@ import { Navbar } from '../navbar/Navbar';
 import { ModuleContext } from './ModulesContext';
 import { ReacommenderPage } from '../recommender/RecommenderPage';
 import Config from './Config';
+import { UserPage } from '../user/UserPage';
 
 export default function App() {
     const [modules, setModules] = useState([])
@@ -31,6 +32,7 @@ export default function App() {
                             <Route component={PageModules} path='/modules/' />
                             <Route component={Details} path='/module/:module_id' />
                             <Route component={ReacommenderPage} path='/recommender/' />
+                            <Route component={UserPage} path='/user/' />
                             <Route component={PageIndex} path='/' />
                         </Switch>
                     </Router>

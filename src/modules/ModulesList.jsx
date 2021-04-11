@@ -10,8 +10,9 @@ export const ModulesList = (props) => {
     return (
         <Box width='large' overflow='auto'>
             <InfiniteScroll items={Object.values(props.modules)} step={10}>
-                {(module) => (
+                {(module, idx) => (
                     <Box
+                        key={idx}
                         flex={false}
                         onMouseOver={() => props.setChosenModule(module)}
                         height='xsmall'
