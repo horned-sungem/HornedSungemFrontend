@@ -1,6 +1,7 @@
 import { Box, Grid, Heading } from 'grommet';
 import React, { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
+import Config from '../common/Config';
 import { ModuleBox } from '../common/ModuleBox';
 
 export const ReacommenderPage = () => {
@@ -10,7 +11,7 @@ export const ReacommenderPage = () => {
 
     useEffect(() => {
         if (!('user' in cookies)) return;
-        fetch('http://127.0.0.1:8000/api/recommend/', {
+        fetch(Config.url + 'api/recommend/', {
             credentials: 'include',
             headers: new Headers({
                 'Authorization': 'Token '+cookies.user.token,

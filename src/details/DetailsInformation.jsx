@@ -1,10 +1,8 @@
-import { Accordion, AccordionPanel, Box } from 'grommet';
+import { Box } from 'grommet';
 import React from 'react';
 import { ModuleTags } from '../common/ModuleTags';
 import { DetailsAccordion } from './DetailsAccordion';
 import { DetailsExtendedHeader } from './DetailsExtendedHeader';
-import { DetailsHorizontalElement } from './DetailsHorizontalElement';
-import { DetailsTagHeader } from './DetailsTagHeader';
 
 export const DetailsInformation = ({ module }) => (
     <>{

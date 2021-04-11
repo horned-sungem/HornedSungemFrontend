@@ -10,12 +10,13 @@ import { Details } from '../details/Details';
 import { Navbar } from '../navbar/Navbar';
 import { ModuleContext } from './ModulesContext';
 import { ReacommenderPage } from '../recommender/RecommenderPage';
+import Config from './Config';
 
 export default function App() {
     const [modules, setModules] = useState([])
 
     useEffect(() => {
-        fetch('http://127.0.0.1:8000/api/modules/')
+        fetch(Config.url + 'api/modules/')
             .then((r) => r.json())
             .then((r) => setModules(r))
     }, [])

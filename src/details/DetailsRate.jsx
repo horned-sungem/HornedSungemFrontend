@@ -1,6 +1,7 @@
 import { RangeInput } from 'grommet';
 import React, { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
+import Config from '../common/Config';
 
 export const DetailsRate = ({ module_id }) => {
 
@@ -14,7 +15,7 @@ export const DetailsRate = ({ module_id }) => {
             if (!('user' in cookies)) return;
             
             console.log(cookies.user);
-            fetch('http://127.0.0.1:8000/api/votes/', {
+            fetch(Config.url + 'api/votes/', {
                 credentials: 'include',
                 headers: new Headers({
                     'Authorization': 'Token '+cookies.user.token,
@@ -38,7 +39,7 @@ export const DetailsRate = ({ module_id }) => {
         () => {
             if (!('user' in cookies)) return;
             timeout = setTimeout(() => {
-                fetch('http://127.0.0.1:8000/api/vote/', {
+                fetch(Config.url + 'api/vote/', {
                     method: 'POST',
                     credentials: 'include',
                     headers: new Headers({

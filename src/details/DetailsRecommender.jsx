@@ -1,6 +1,7 @@
 import { Box } from 'grommet'
 import React, { useContext, useEffect, useState } from 'react'
 import { useCookies } from 'react-cookie';
+import Config from '../common/Config';
 import { ModuleBox } from '../common/ModuleBox';
 import { ModuleContext } from '../common/ModulesContext';
 import { DetailsRate } from './DetailsRate';
@@ -13,7 +14,7 @@ export const DetailsRecommender = ({ module_id }) => {
 
     useEffect(() => {
         setSimilarModules([]);
-        fetch('http://127.0.0.1:8000/api/similar/' + module_id + '/')
+        fetch(Config.url + 'api/similar/' + module_id + '/')
             .then(r => r.json())
             .then(r => setSimilarModules(r))
     }, [module_id])

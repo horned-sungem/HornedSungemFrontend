@@ -1,6 +1,6 @@
 import React from 'react';
 import { Nav, Sidebar } from 'grommet';
-import { BladesHorizontal, BladesVertical, Chat, Home, Resources } from 'grommet-icons';
+import { BladesVertical, Home, Resources } from 'grommet-icons';
 import { NavbarItem } from './NavbarItem';
 import { LoginElement } from './LoginElement';
 import { LogoutElement } from './LogoutElement';

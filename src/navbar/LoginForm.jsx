@@ -1,6 +1,7 @@
 import { Box, Button, Form, FormField, TextInput } from 'grommet';
 import React, { useState } from 'react';
 import { useCookies } from 'react-cookie';
+import Config from '../common/Config';
 
 
 export const LoginForm = ({ setError, setLayerOpen, onRegister }) => {
@@ -12,7 +13,7 @@ export const LoginForm = ({ setError, setLayerOpen, onRegister }) => {
         <Form
             onChange={() => {setWrongPassword(false)}}
             onSubmit={formValue => { 
-                fetch('http://127.0.0.1:8000/api/login/',
+                fetch(Config.url + 'api/login/',
                     {
                         method: 'POST',
                         headers: {
