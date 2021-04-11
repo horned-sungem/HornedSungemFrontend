@@ -57,7 +57,7 @@ export const RegisterForm = ({ setLayerOpen }) => {
             </FormField>
             <FormField 
                 name='password2' 
-                error={(form.password != form.password2) && 'Passwords do not match'}
+                error={(form.password1 != form.password2) && 'Passwords do not match'}
                 required>
                 <TextInput type='password' id='pw-input-field-reg-2' name='password2' placeholder='Repeat password'/>
             </FormField>
