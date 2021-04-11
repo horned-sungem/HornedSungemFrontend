@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Logo } from '../common/Logo';
 import { Button } from '../common/Button';
 
 import './PageIndex.sass'
+import { Link } from 'react-router-dom';
+import { LoginElement } from '../navbar/LoginElement';
+import { Box, Layer } from 'grommet';
+import { LoginModal } from '../navbar/LoginModal';
+import { useCookies } from 'react-cookie';
 
 export const PageIndex = () => {
+
+    const [layerOpen, setLayerOpen] = useState(false);
+    const [cookies] = useCookies(['user'])
+
     return (
         <div className='page-index'>
             <div className='content'>
@@ -19,10 +28,27 @@ export const PageIndex = () => {
                     Materials Google Design stibitzt.<br></br>
                     Und eventuell par links zu den pages auf der Sidebar.
                 </p>
-                <Button variant='primary'>Empfohlene Module ansehen</Button>
-                <Button variant='primary' outline>
-                    Module durchsuchen
-                </Button>
+                <Link to={('user' in cookies) && '/recommender/'}>
+                    <Button variant='primary' onClick={() => setLayerOpen(true)}>Empfohlene Module ansehen</Button>
+                </Link>
+                
+                <Link to='/modules/'>
+                    <Button variant='primary' outline > 
+                        Module durchsuchen {/* TODO: hier noch was anderes mit Link/Button machen weil die Ecken hier nicht abgeschnitten werden (beim Link) */}
+                    </Button>
+                </Link>
+                <Box background='light-1'>
+                {layerOpen && <Layer
+                    onEsc={() => setLayerOpen(false)}
+                    onClickOutside={() => setLayerOpen(false)}
+                    position='center'
+                    modal
+                    className='login-modal-parent'
+                >
+
+                    <LoginModal setLayerOpen={setLayerOpen}/>
+                </Layer> }
+            </Box>
             </div>
         </div>
     );
