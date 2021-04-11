@@ -7,11 +7,13 @@ import { LogoutElement } from './LogoutElement';
 import { useCookies } from 'react-cookie';
 
 export const Navbar = () => {
-
-    const [cookies] = useCookies(['user'])
+    const [cookies] = useCookies(['user']);
 
     return (
-        <Sidebar className='navbar' background='brand' footer={('user' in cookies) ? <LogoutElement /> : <LoginElement />}>
+        <Sidebar
+            className='navbar'
+            background='accent-1'
+            footer={'user' in cookies ? <LogoutElement /> : <LoginElement />}>
             <Nav gap='small'>
                 <NavbarItem to='/'>
                     <Home />
@@ -19,10 +21,12 @@ export const Navbar = () => {
                 <NavbarItem to='/modules/'>
                     <BladesVertical />
                 </NavbarItem>
-                {('user' in cookies) && <NavbarItem to='/recommender/'>
-                    <Resources />
-                </NavbarItem>}
+                {'user' in cookies && (
+                    <NavbarItem to='/recommender/'>
+                        <Resources />
+                    </NavbarItem>
+                )}
             </Nav>
         </Sidebar>
     );
-}
+};

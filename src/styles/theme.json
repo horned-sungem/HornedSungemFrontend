@@ -1,0 +1,21 @@
+{
+    "name": "horned-sungem",
+    "rounding": 8,
+    "spacing": 16,
+    "defaultMode": "light",
+    "global": {
+        "colors": {
+            "brand": {
+                "dark": "#642ca9",
+                "light": "#642ca9"
+            },
+            "accent-1": {
+                "dark": "#ff0048",
+                "light": "#ff0048"
+            }
+        }
+    },
+    "font": {
+        "family": "Lato"
+    }
+}
