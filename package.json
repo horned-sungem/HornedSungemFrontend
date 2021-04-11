@@ -8,7 +8,7 @@
     "build": "vite build",
     "serve": "vite preview",
     "prettier": "prettier --write .",
-    "predeploy": "yarn build",
+    "predeploy": "yarn build && cp CNAME dist/CNAME",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
