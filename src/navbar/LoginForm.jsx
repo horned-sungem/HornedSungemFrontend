@@ -57,7 +57,6 @@ export const LoginForm = ({ setError, setLayerOpen, onRegister }) => {
             </FormField>
             <Box direction='row' gap='medium' justify='center'>
                 <Button type='submit' primary label='Login' />
-                <Button type='button' label='Register' onClick={onRegister}/>
             </Box>
         </Form>
     )
