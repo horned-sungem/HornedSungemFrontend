@@ -35,5 +35,16 @@
     },
     "font": {
         "family": "Lato"
+    },
+    "accordion": {
+        "heading": {
+            "level": "3",
+            "margin": "0.5rem 0"
+        },
+        "hover": {
+            "heading": {
+                "color": "brand"
+            }
+        }
     }
 }
