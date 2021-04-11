@@ -1,10 +1,29 @@
 import { Box, TextInput } from 'grommet';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
-export const ModulesSelector = () => {
+export const ModulesSelector = ({ setModuleFilter }) => {
+
+    const [minCp, setMinCp] = useState(null);
+    const [maxCp, setMaxCp] = useState(null);
+
+    useEffect(() => {
+
+        const filters = [
+            module => (!minCp) || module.cp >= parseInt(minCp),
+            module => (!maxCp) || module.cp <= parseInt(maxCp)
+        ]
+
+        const moduleFilter = (module) => !(filters.map((filt) => filt(module)).includes(false))
+
+        setModuleFilter(() => moduleFilter)
+
+    }, [minCp, maxCp])
+
     return (
         <Box height={{min: 'auto'}}>
-            CP <TextInput />
+            <Box direction='row' align='center' gap='small'>
+                CP from <TextInput onChange={event => setMinCp(event.target.value)} /> to <TextInput onChange={event => setMaxCp(event.target.value)} />
+            </Box>
             Name <TextInput />
         </Box>
     )

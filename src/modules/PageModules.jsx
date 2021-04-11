@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Box } from 'grommet';
 import { ModuleContext } from '../common/ModulesContext';
 import { ModulesDescription } from './ModulesDescription';
@@ -8,13 +8,14 @@ import { ModulesSelector } from './ModulesSelector';
 export const PageModules = () => {
     const [chosenModule, setChosenModule] = useState(null);
     const modules = useContext(ModuleContext);
+    const [moduleFilter, setModuleFilter] = useState(() => (() => true));
 
     return (
         <Box direction='row' border='between' gap='small' margin='small'>
             <Box>
-                <ModulesSelector />
+                <ModulesSelector setModuleFilter={setModuleFilter}/>
                 <ModulesList
-                    modules={modules}
+                    modules={modules.filter(moduleFilter)}
                     setChosenModule={setChosenModule}
                 />
             </Box>
