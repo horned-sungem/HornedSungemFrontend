@@ -1,9 +1,9 @@
-import { Box, Button, Layer, Stack } from 'grommet';
+import { Box, Button, Layer } from 'grommet';
 import { Login } from 'grommet-icons';
 import React, { useState } from 'react';
-import { LoginModal } from './LoginModal';
+import { LRModal } from './LRModal';
 
-export const LoginElement = () => {
+export const LRElement = () => {
 
     const [layerOpen, setLayerOpen] = useState(false);
 
@@ -17,7 +17,7 @@ export const LoginElement = () => {
 
             </Button>
 
-            <Box background='light-1'>
+            <Box background='light-1'> {/* Background is set to light as otherwise Elements inside the modal choose weird color contrasts */}
                 {layerOpen && <Layer
                     onEsc={() => setLayerOpen(false)}
                     onClickOutside={() => setLayerOpen(false)}
@@ -26,7 +26,7 @@ export const LoginElement = () => {
                     className='login-modal-parent'
                 >
 
-                    <LoginModal setLayerOpen={setLayerOpen}/>
+                    <LRModal setLayerOpen={setLayerOpen}/>
                 </Layer> }
             </Box>
         </Box>

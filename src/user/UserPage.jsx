@@ -18,8 +18,8 @@ export const UserPage = () => {
                     <Heading>Recommended modules for <i>{cookies.user.username}</i></Heading>
                 </Box>
                     <Box width='full' gap='small' direction='column'>
-                            {votes.map((m, idx) => 
-                            <Box key={idx} direction='row'>
+                            {votes.map(m => 
+                            <Box key={m[0].id} direction='row'>
                                 <Box width='large'>{m[0].name}</Box>
                                 <Box width='medium'>
                                 <DetailsRate module_id={m[0].id} />

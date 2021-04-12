@@ -2,7 +2,7 @@ import React from 'react';
 import { Nav, Sidebar } from 'grommet';
 import { BladesVertical, Home, Resources, User } from 'grommet-icons';
 import { NavbarItem } from './NavbarItem';
-import { LoginElement } from './LoginElement';
+import { LRElement } from './LRElement';
 import { LogoutElement } from './LogoutElement';
 import { useCookies } from 'react-cookie';
 
@@ -13,7 +13,7 @@ export const Navbar = () => {
         <Sidebar
             className='navbar'
             background='accent-1'
-            footer={'user' in cookies ? <LogoutElement /> : <LoginElement />}>
+            footer={'user' in cookies ? <LogoutElement /> : <LRElement />}>
             <Nav gap='small'>
                 <NavbarItem to='/'>
                     <Home />
