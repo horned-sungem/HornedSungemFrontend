@@ -1,4 +1,4 @@
-import { Accordion, AccordionPanel, Box, Paragraph } from 'grommet';
+import { Accordion, AccordionPanel, Box } from 'grommet';
 import React from 'react';
 
 export const DetailsAccordion = ({ module }) => (
