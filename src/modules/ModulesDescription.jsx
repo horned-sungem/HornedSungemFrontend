@@ -1,14 +1,16 @@
-import { Box } from 'grommet';
 import React from 'react';
+import { Box, Header } from 'grommet';
+import { DetailsInformation } from '../details/DetailsInformation';
 
-export const ModulesDescription = (props) => (
-
-    <Box width='medium'>
-        <>
-            {props.chosenModule !== null ? <>
-            <h2>{props.chosenModule.name}</h2>
-            <p>{props.chosenModule.self_study}</p>
-            </> : <div/>}
-        </>
-    </Box>
-)
+export const ModulesDescription = (props) => {
+    return (
+        <Box flex>
+            <Header background='brand' pad='small'>
+                <h3 style={{ margin: '1rem 0' }}>
+                    {props.chosenModule.name} - {props.chosenModule.id}
+                </h3>
+            </Header>
+            <DetailsInformation module={props.chosenModule} />
+        </Box>
+    );
+};
