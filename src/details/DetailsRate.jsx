@@ -28,40 +28,37 @@ export const DetailsRate = ({ module_id }) => {
         }, [cookies, module_id, votes]
     )
 
-    useEffect(
-        () => {
-            if (rating === null) return;
-            if (rating === 0 && votes.length === 0 ) return;
-            if (!('user' in cookies)) return;
-            timeout = setTimeout(() => {
-                fetch(Config.url + 'api/vote/', {
-                    method: 'POST',
-                    credentials: 'include',
-                    headers: new Headers({
-                        'Authorization': 'Token '+cookies.user.token,
-                        'Content-Type': 'application/json'
-                    }),
-                    body: JSON.stringify({
-                        score: rating,
-                        module: slash_id
-                    })
+    const updateVote = (rating) => {
+        if (rating === null) return;
+        if (rating === 0 && votes.length === 0 ) return;
+        if (!('user' in cookies)) return;
+        timeout = setTimeout(() => {
+            fetch(Config.url + 'api/vote/', {
+                method: 'POST',
+                credentials: 'include',
+                headers: new Headers({
+                    'Authorization': 'Token '+cookies.user.token,
+                    'Content-Type': 'application/json'
+                }),
+                body: JSON.stringify({
+                    score: rating,
+                    module: slash_id
                 })
-                .then(r => r.json())
-                .then(
-                    (module) => {
-                        setVotes(votes => 
-                            rating != 0 ?
-                            [...votes.filter(vote => vote[0].id !== slash_id), [module, parseInt(rating)] ]
-                            : votes.filter(vote => vote[0].id !== slash_id) )
-                    }
-                )
-            }, 500)
-            return () => {
-                clearTimeout(timeout) // Literally no idea how or why this works but it seems to debounce the rating and keep our backend alive
-            }
-            
-        }, [rating, cookies]
-    )
+            })
+            .then(r => r.json())
+            .then(
+                (module) => {
+                    setVotes(votes => 
+                        rating != 0 ?
+                        [...votes.filter(vote => vote[0].id !== slash_id), [module, parseInt(rating)] ]
+                        : votes.filter(vote => vote[0].id !== slash_id) )
+                }
+            )
+        }, 500)
+        return () => {
+            clearTimeout(timeout) // Literally no idea how or why this works but it seems to debounce the rating and keep our backend alive
+        }
+    }
 
     return (
         <>
@@ -70,7 +67,7 @@ export const DetailsRate = ({ module_id }) => {
                 min={-5} 
                 max={5} 
                 value={rating} 
-                onChange={r => setRating(r.target.value)}/>}
+                onChange={r => {updateVote(r.target.value); setRating(r.target.value)}}/>}
         </>
     );
 }
