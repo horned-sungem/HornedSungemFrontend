@@ -1,4 +1,4 @@
-import { Box, Button, Form, FormField, TextInput } from 'grommet';
+import { Box, Button, Form, FormField, Spinner, TextInput } from 'grommet';
 import React, { useState } from 'react';
 import { useCookies } from 'react-cookie';
 import Config from '../common/Config';
@@ -9,12 +9,14 @@ export const RegisterForm = ({ setLayerOpen }) => {
     const [duplicateUsername, setDuplicateUsername] = useState(false);
     const [, setCookies] = useCookies(['user']);
     const [form, setForm] = useState({})
+    const [isLoading, setIsLoading] = useState(false);
 
     return (
         <Form
             onChange={(value) => {setDuplicateUsername(false); setForm(value)}}
             onSubmit={formValue => { 
                 if (form.password1 !== form.password2) return;
+                setIsLoading(true);
                 fetch(Config.url + 'api/register/',
                     {
                         method: 'POST',
@@ -45,6 +47,7 @@ export const RegisterForm = ({ setLayerOpen }) => {
                     .catch(() => {
                         setDuplicateUsername(true)
                     })
+                    .then(() => setIsLoading(false))
                 }}>
             <FormField name='username_reg' error={duplicateUsername && 'Username already exisits'}
                 required>
@@ -62,7 +65,7 @@ export const RegisterForm = ({ setLayerOpen }) => {
                 <TextInput type='password' id='pw-input-field-reg-2' name='password2' placeholder='Repeat password'/>
             </FormField>
             <Box direction='row' gap='medium' justify='center'>
-                <Button type='submit' primary label='Register' />
+                <Button type='submit' primary label={<Box direction='row' gap='small'>Register {isLoading && <Spinner color='#fff'/>}</Box>} />
             </Box>
         </Form>
     )

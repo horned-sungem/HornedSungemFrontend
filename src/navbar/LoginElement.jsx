@@ -1,4 +1,4 @@
-import { Box, Button, Layer } from 'grommet';
+import { Box, Button, Layer, Stack } from 'grommet';
 import { Login } from 'grommet-icons';
 import React, { useState } from 'react';
 import { LoginModal } from './LoginModal';

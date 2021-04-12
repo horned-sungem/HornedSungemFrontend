@@ -1,18 +1,20 @@
-import { Box, Button, Form, FormField, TextInput } from 'grommet';
+import { Box, Button, Form, FormField, Spinner, TextInput } from 'grommet';
 import React, { useState } from 'react';
 import { useCookies } from 'react-cookie';
 import Config from '../common/Config';
 
 
-export const LoginForm = ({ setError, setLayerOpen, onRegister }) => {
+export const LoginForm = ({ setError, setLayerOpen }) => {
 
     const [wrongPassword, setWrongPassword] = useState(false);
     const [, setCookies] = useCookies(['user']);
+    const [isLoading, setIsLoading] = useState(false);
 
     return (
         <Form
             onChange={() => {setWrongPassword(false)}}
             onSubmit={formValue => { 
+                setIsLoading(true);
                 fetch(Config.url + 'api/login/',
                     {
                         method: 'POST',
@@ -43,6 +45,7 @@ export const LoginForm = ({ setError, setLayerOpen, onRegister }) => {
                                 350
                             )
                         }
+                        setIsLoading(false);
                     })
                 }}>
             <FormField name='username'
@@ -56,7 +59,7 @@ export const LoginForm = ({ setError, setLayerOpen, onRegister }) => {
                 <TextInput type='password' id='pw-input-field' name='password' placeholder='Password'/>
             </FormField>
             <Box direction='row' gap='medium' justify='center'>
-                <Button type='submit' primary label='Login' />
+                <Button type='submit' primary label={<Box direction='row' gap='small'>Login {isLoading && <Spinner color='#fff'/>}</Box>} />
             </Box>
         </Form>
     )
