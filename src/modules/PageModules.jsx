@@ -17,7 +17,7 @@ export const PageModules = () => {
 
     return (
         <Box direction='row' border='between' gap='small' margin='small' fill='horizontal'>
-            <Box>
+            <Box flex>
                 <ModulesSelector setModuleFilter={setModuleFilter}/>
                 <ModulesList
                     modules={modules.filter(moduleFilter)}
