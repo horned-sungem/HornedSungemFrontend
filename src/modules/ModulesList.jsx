@@ -15,7 +15,7 @@ export const ModulesList = (props) => {
     const vote_ids = votes.map(vote => vote[0].id)
 
     return (
-        <Box width='large' overflow='auto'>
+        <Box width='full' overflow='auto'>
             <InfiniteScroll items={Object.values(props.modules)} step={10}>
                 {(module, idx) => (
                     <Box
