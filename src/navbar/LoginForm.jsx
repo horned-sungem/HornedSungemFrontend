@@ -48,18 +48,20 @@ export const LoginForm = ({ setError, setLayerOpen }) => {
                         setIsLoading(false);
                     })
                 }}>
-            <FormField name='username'
-                required>
-                <TextInput id='name-input-field' name='username' placeholder='Username'/>
-            </FormField>
-            <FormField 
-                name='password' 
-                error={wrongPassword && 'Wrong username or password'}
-                required>
-                <TextInput type='password' id='pw-input-field' name='password' placeholder='Password'/>
-            </FormField>
-            <Box direction='row' gap='medium' justify='center'>
-                <Button type='submit' primary label={<Box direction='row' gap='small'>Login {isLoading && <Spinner color='#fff'/>}</Box>} />
+            <Box direction='column'>
+                <FormField name='username'
+                    required>
+                    <TextInput id='name-input-field' name='username' placeholder='Username'/>
+                </FormField>
+                <FormField 
+                    name='password' 
+                    error={wrongPassword && 'Wrong username or password'}
+                    required>
+                    <TextInput type='password' id='pw-input-field' name='password' placeholder='Password'/>
+                </FormField>
+                <Box direction='row' gap='medium' justify='center' alignContent='end'>
+                    <Button type='submit' primary label={<Box direction='row' gap='small'>Login {isLoading && <Spinner color='#fff'/>}</Box>} />
+                </Box>
             </Box>
         </Form>
     )
