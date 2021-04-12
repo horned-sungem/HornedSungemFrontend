@@ -14,7 +14,7 @@ export const RegisterForm = ({ setLayerOpen }) => {
         <Form
             onChange={(value) => {setDuplicateUsername(false); setForm(value)}}
             onSubmit={formValue => { 
-                if (form.password !== form.password2) return;
+                if (form.password1 !== form.password2) return;
                 fetch(Config.url + 'api/register/',
                     {
                         method: 'POST',
@@ -22,8 +22,8 @@ export const RegisterForm = ({ setLayerOpen }) => {
                             'Content-Type': 'application/json',
                         },
                         body: JSON.stringify({
-                            username: formValue.value.username,
-                            password: formValue.value.password
+                            username: formValue.value.username_reg,
+                            password: formValue.value.password1
                         })
                     })
                     .then(r => r.json())
@@ -46,9 +46,9 @@ export const RegisterForm = ({ setLayerOpen }) => {
                         setDuplicateUsername(true)
                     })
                 }}>
-            <FormField name='username-reg' error={duplicateUsername && 'Username already exisits'}
+            <FormField name='username_reg' error={duplicateUsername && 'Username already exisits'}
                 required>
-                <TextInput id='name-input-field-reg' name='username-reg' placeholder='Username'/>
+                <TextInput id='name-input-field-reg' name='username_reg' placeholder='Username'/>
             </FormField>
             <FormField 
                 name='password1' 
