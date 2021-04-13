@@ -31,6 +31,12 @@
             "shadow": {
                 "size": "1px"
             }
+        },
+        "control": {
+            "border": {
+                "radius": "20px",
+                "width": "2px"
+            }
         }
     },
     "font": {
