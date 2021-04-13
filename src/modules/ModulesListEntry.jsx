@@ -4,7 +4,7 @@ import React from 'react';
 export const ModulesListEntry = ({ children, module }) => (
     <Box
         pad='small'
-        round='small'
+        round='medium'
         background='#F2F2F2'
         direction='row'
         gap='none'
