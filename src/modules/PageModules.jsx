@@ -11,10 +11,6 @@ export const PageModules = () => {
     const [moduleFilter, setModuleFilter] = useState(() => (() => true));
     const size = React.useContext(ResponsiveContext);
 
-    useEffect(() => {
-        console.log(size);
-    })
-
     return (
         <Box direction='row' border='between' gap='small' margin='small' fill='horizontal'>
             <Box flex>
