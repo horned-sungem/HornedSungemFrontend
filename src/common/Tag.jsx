@@ -8,7 +8,7 @@ export const Tag = ({ children, suffix, prefix }) => (
                 {prefix}
             </Text>
         )}
-        <Text weight='bold' color='brand' size='large'>
+        <Text textAlign='center' weight='bold' color='brand' size='large'>
             {children}
         </Text>
         {suffix && (
