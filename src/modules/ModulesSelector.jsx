@@ -18,8 +18,8 @@ export const ModulesSelector = ({ setModuleFilter }) => {
             module => (!maxCp) || module.cp <= parseInt(maxCp),
             module => module.name.toLowerCase().includes(searchString.toLowerCase()),
             module => module.id.toLowerCase().includes(nrString.toLowerCase()),
-            module => (!turnus.ws) || module.cycle.toLowerCase().includes('wintersemester'),
-            module => (!turnus.ss) || module.cycle.toLowerCase().includes('sommersemester')
+            module => (!turnus.ws) || (module.cycle.toLowerCase().includes('wintersemester') || module.cycle.toLowerCase().includes('jedes semester')),
+            module => (!turnus.ss) || (module.cycle.toLowerCase().includes('sommersemester') || module.cycle.toLowerCase().includes('jedes semester'))
         ]
 
         const moduleFilter = (module) => !(filters.map((filt) => filt(module)).includes(false))
