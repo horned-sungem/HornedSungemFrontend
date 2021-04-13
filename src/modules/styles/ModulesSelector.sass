@@ -1,0 +1,30 @@
+@import '../../styles/_variables'
+
+
+.module-selector__box-top
+    margin-top: $font-size
+.turnus-button-group
+    border: 1px solid $primary
+    border-radius: 12px
+    overflow: hidden
+    button
+        color: $primary
+        padding: $font-size / 2 5px
+        text-align: center
+        width: $font-size * 2.5
+
+        &:focus
+            box-shadow: none
+
+        &.button-ws
+            border-right: 1px solid $primary
+            
+        &.button--active
+            background-color: $primary
+            color: $white
+
+.horizontal-line
+    border-bottom: 2px solid #BDBDBD
+    height: 2px
+    margin-top: $font-size
+    margin-bottom: $font-size / 3
