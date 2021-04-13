@@ -22,7 +22,7 @@ export const ModulesList = (props) => {
                         key={idx}
                         flex={false}
                         onMouseOver={() => props.setChosenModule(module)}
-                        height='xsmall'
+                        height={{min: 'xsmall'}}
                         className={'list__item' + (vote_ids.includes(module.id) ? ' list__item--voted' : '')}
                         justify='center'
                         border='bottom'
