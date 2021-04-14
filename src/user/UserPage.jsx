@@ -22,7 +22,7 @@ export const UserPage = () => {
                             <Box key={m[0].id} direction='row'>
                                 <Box width='large'>{m[0].name}</Box>
                                 <Box width='medium'>
-                                <DetailsRate module_id={m[0].id} />
+                                <DetailsRate module_id={m[0].nr} />
                                 </Box>
                             </Box>)}
                     </Box>
