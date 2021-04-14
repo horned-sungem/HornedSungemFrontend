@@ -12,7 +12,7 @@ export const ModulesList = (props) => {
 
     const { votes } = useContext(VotesContext);
 
-    const vote_ids = votes.map(vote => vote[0].id)
+    const vote_ids = votes.map(vote => vote[0].nr)
 
     return (
         <Box width='full' overflow='auto'>
@@ -23,12 +23,12 @@ export const ModulesList = (props) => {
                         flex={false}
                         onMouseOver={() => props.setChosenModule(module)}
                         height={{min: 'xsmall'}}
-                        className={'list__item' + (vote_ids.includes(module.id) ? ' list__item--voted' : '')}
+                        className={'list__item' + (vote_ids.includes(module.nr) ? ' list__item--voted' : '')}
                         justify='center'
                         border='bottom'
                         onClick={() =>
                             history.push(
-                                '/module/' + module.id.replace('/', '_')
+                                '/module/' + module.nr.replace('/', '_')
                             )
                         }>
                         <ModulesListEntry module={module}>

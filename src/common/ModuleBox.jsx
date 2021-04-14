@@ -18,7 +18,7 @@ export const ModuleBox = ({ module }) => {
             justify='center'
             pad='small'
             onClick={() =>
-                history.push('/module/' + module.id.replace('/', '_'))
+                history.push('/module/' + module.nr.replace('/', '_'))
             }
             style={{ minHeight: 'auto' }}>
             <Box>

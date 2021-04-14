@@ -7,7 +7,7 @@ export const ModulesDescription = (props) => {
         <Box flex overflow='auto'>
             <Header background='brand' pad='small'>
                 <h3 style={{ margin: '1rem 0' }}>
-                    {props.chosenModule.name} - {props.chosenModule.id}
+                    {props.chosenModule.name} - {props.chosenModule.nr}
                 </h3>
             </Header>
             <DetailsInformation module={props.chosenModule} />

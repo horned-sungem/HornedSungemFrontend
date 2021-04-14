@@ -21,7 +21,7 @@ export const Details = () => {
             <Header background='brand' pad='small'>
                 {loadedModule !== null ? (
                     <h3 style={{ margin: '1rem 0' }}>
-                        {loadedModule.name} - {loadedModule.id}
+                        {loadedModule.name} - {loadedModule.nr}
                     </h3>
                 ) : (
                     <h3 style={{ margin: '1rem 0' }}>Loading</h3>

@@ -29,7 +29,7 @@ export const DetailsRecommender = ({ module_id }) => {
                         {similarModules
                             .filter(
                                 (module) =>
-                                    modules[module].id.replace('/', '_') !==
+                                    modules[module].nr.replace('/', '_') !==
                                     module_id
                             )
                             .map((module, idx) => (

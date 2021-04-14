@@ -17,7 +17,7 @@ export const DetailsRate = ({ module_id }) => {
             
             if (rating !== null) return;
 
-            const optional_module = votes.filter(pair => pair[0].id == slash_id)
+            const optional_module = votes.filter(pair => pair[0].nr == slash_id)
             
             if (optional_module.length > 0) {
                 setRating(optional_module[0][1])
@@ -50,8 +50,8 @@ export const DetailsRate = ({ module_id }) => {
                 (module) => {
                     setVotes(votes => 
                         rating != 0 ?
-                        [...votes.filter(vote => vote[0].id !== slash_id), [module, parseInt(rating)] ]
-                        : votes.filter(vote => vote[0].id !== slash_id) )
+                        [...votes.filter(vote => vote[0].nr !== slash_id), [module, parseInt(rating)] ]
+                        : votes.filter(vote => vote[0].rn !== slash_id) )
                 }
             )
         }, 500)
