@@ -49,7 +49,7 @@ export const ModulesSelector = ({ setModuleFilter }) => {
                 </Box>
                 <Box>
                     <Select
-                        placeholder='Test1'
+                        placeholder='Wahlbereich'
                         multiple
                         closeOnChange={false}
                         value={section}
