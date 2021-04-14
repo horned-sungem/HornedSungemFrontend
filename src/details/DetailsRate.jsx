@@ -15,6 +15,20 @@ export const DetailsRate = ({ module_id }) => {
     useEffect(
         () => {
             
+            const optional_module = votes.filter(pair => pair[0].nr == slash_id)
+            
+            if (optional_module.length > 0) {
+                setRating(optional_module[0][1])
+            } else {
+                setRating(0)
+            }
+
+        }, [cookies, module_id]
+    )
+    
+    useEffect(
+        () => {
+            
             if (rating !== null) return;
 
             const optional_module = votes.filter(pair => pair[0].nr == slash_id)
@@ -25,7 +39,7 @@ export const DetailsRate = ({ module_id }) => {
                 setRating(0)
             }
 
-        }, [cookies, module_id, votes]
+        }, [votes]
     )
 
     const updateVote = (rating) => {

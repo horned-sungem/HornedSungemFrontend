@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { Box, Button, TextInput, Text } from 'grommet';
+import React, { useContext, useEffect, useState } from 'react';
+import { Box, Button, TextInput, Text, Select } from 'grommet';
+import { ModuleContext } from '../common/ModulesContext';
 
 import './styles/ModulesSelector.sass'
 
@@ -11,6 +12,17 @@ export const ModulesSelector = ({ setModuleFilter }) => {
     const [nrString, setNrString] = useState('');
     const [turnus, setTurnus] = useState({ws: false, ss: false})
 
+    const [section, setSection] = useState([]);
+    const [options, setOptions] = useState([]);
+    const modules = useContext(ModuleContext)
+
+    useEffect(() => {
+        setOptions([...new Set(modules.map(x => x.pagegroup))])
+    }, [modules])
+
+    console.log(section)
+
+
     useEffect(() => {
 
         const filters = [
@@ -19,20 +31,30 @@ export const ModulesSelector = ({ setModuleFilter }) => {
             module => module.name.toLowerCase().includes(searchString.toLowerCase()),
             module => module.nr.toLowerCase().includes(nrString.toLowerCase()),
             module => (!turnus.ws) || (module.cycle.toLowerCase().includes('wintersemester') || module.cycle.toLowerCase().includes('jedes semester')),
-            module => (!turnus.ss) || (module.cycle.toLowerCase().includes('sommersemester') || module.cycle.toLowerCase().includes('jedes semester'))
+            module => (!turnus.ss) || (module.cycle.toLowerCase().includes('sommersemester') || module.cycle.toLowerCase().includes('jedes semester')),
+            module => (section.length < 1) || (section.includes(module.pagegroup))
         ]
 
         const moduleFilter = (module) => !(filters.map((filt) => filt(module)).includes(false))
 
         setModuleFilter(() => moduleFilter)
 
-    }, [minCp, maxCp, searchString, nrString, turnus])
+    }, [minCp, maxCp, searchString, nrString, turnus, section])
 
     return (
         <Box height={{min: 'auto'}} gap='small'>
             <Box className='module-selector__box-top' direction='row' align='center' justify='between' gap='small'>
                 <Box width={{min: 'small'}} direction='row' align='center' gap='small'>
                     Name <TextInput placeholder='z.B. Digitaltechnik' onChange={event => setSearchString(event.target.value)} />
+                </Box>
+                <Box>
+                    <Select
+                        placeholder='Test1'
+                        multiple
+                        closeOnChange={false}
+                        value={section}
+                        options={options}
+                        onChange={({value: nextValue}) => setSection(nextValue)} />
                 </Box>
                 <Box direction='row' align='center' gap='small'>
                     Turnus:

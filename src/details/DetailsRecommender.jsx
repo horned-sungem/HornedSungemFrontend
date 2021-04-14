@@ -14,8 +14,8 @@ export const DetailsRecommender = ({ module_id }) => {
     useEffect(() => {
         setSimilarModules([]);
         fetch(Config.url + 'api/similar/' + module_id + '/')
-            .then((r) => r.json())
-            .then((r) => setSimilarModules(r));
+            .then((r) => r.json()).then((r) => {console.log(r); return r})
+            .then((r) => setSimilarModules(r))
     }, [module_id]);
 
     return (
@@ -25,7 +25,7 @@ export const DetailsRecommender = ({ module_id }) => {
                     {cookies.user != null && (
                         <DetailsRate module_id={module_id} />
                     )}
-                    <Box gap='small' style={{ marginTop: '0.5rem' }}>
+                    <Box gap='small' style={{ marginTop: '0.5rem' }} overflow='auto'>
                         {similarModules
                             .filter(
                                 (module) =>
