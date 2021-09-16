@@ -1,6 +1,6 @@
 import { Box, Main } from 'grommet';
 import React, { useEffect, useMemo, useState } from 'react';
-import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
+import { Route, Switch, HashRouter as Router } from 'react-router-dom';
 import { PageModules } from '../modules/PageModules';
 import { PageIndex } from '../index/PageIndex';
 
