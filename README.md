@@ -1,6 +1,8 @@
-# HornedSungemFrontend
+# Horned Sungem
 
-The frontend for the horned sungmem
+A webapp for viewing, sorting, filtering and recommending modules for the Computer Science degree at Darmstadt Technical University.
+
+This repository contains the frontend.
 
 ## Installation
 
@@ -11,3 +13,11 @@ yarn
 ```
 
 This project uses [vitejs](https://vitejs.dev/) as frontend tooling.
+
+Run 
+
+```bash
+yarn vite
+```
+
+to start a local instance of the Horned Sungem frontend.
