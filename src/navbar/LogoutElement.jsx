@@ -1,5 +1,5 @@
 import { Box, Button, Layer } from 'grommet';
-import { Logout } from 'grommet-icons';
+import { Logout } from '@mui/icons-material';
 import React, { useState } from 'react';
 import { LogoutModal } from './LogoutModal';
 
@@ -13,7 +13,7 @@ export const LogoutElement = () => {
                 className='navbar__item' 
                 activeClassName='navbar__item--active' 
                 onClick={() => {setLayerOpen(true)}}>
-                <Logout />
+                <Logout sx={{ fontSize: 30 }} />
 
             </Button>
 
