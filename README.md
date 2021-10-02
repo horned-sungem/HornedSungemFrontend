@@ -1,6 +1,6 @@
 # Horned Sungem
 
-A webapp for viewing, sorting, filtering and recommending modules for the Computer Science degrees (e.g. [CS B.Sc.](https://www.tu-darmstadt.de/studieren/studieninteressierte/studienangebot_studiengaenge/studiengang_177792.de.jsp)) at [Darmstadt Technical University](https://www.tu-darmstadt.de/index.en.jsp). The most recent state can be seen at https://sungem.lenny.codes.
+A webapp for viewing, sorting, filtering and recommending modules for the Computer Science degrees (e.g. [CS B.Sc.](https://www.tu-darmstadt.de/studieren/studieninteressierte/studienangebot_studiengaenge/studiengang_177792.de.jsp)) at [Darmstadt Technical University](https://www.tu-darmstadt.de/index.en.jsp). The most recent state can be seen at [sungem.lenny.codes](https://sungem.lenny.codes).
 
 This repository contains the frontend of our webapp.
 
