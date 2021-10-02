@@ -1,5 +1,5 @@
 import { Box, Button, Layer } from 'grommet';
-import { Login } from 'grommet-icons';
+import { Login  } from '@mui/icons-material';
 import React, { useState } from 'react';
 import { LRModal } from './LRModal';
 
@@ -13,7 +13,7 @@ export const LRElement = () => {
                 className='navbar__item' 
                 activeClassName='navbar__item--active' 
                 onClick={() => {setLayerOpen(true)}}>
-                <Login />
+                <Login sx={{ fontSize: 30 }} />
 
             </Button>
 

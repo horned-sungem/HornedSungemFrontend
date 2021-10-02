@@ -1,6 +1,6 @@
 import React from 'react';
 import { Nav, Sidebar } from 'grommet';
-import { BladesVertical, Home, Resources, User } from 'grommet-icons';
+import { FormatListBulleted, HomeOutlined, AssistantOutlined, AccountCircleOutlined } from '@mui/icons-material';
 import { NavbarItem } from './NavbarItem';
 import { LRElement } from './LRElement';
 import { LogoutElement } from './LogoutElement';
@@ -16,18 +16,20 @@ export const Navbar = () => {
             footer={'user' in cookies ? <LogoutElement /> : <LRElement />}>
             <Nav gap='small'>
                 <NavbarItem to='/'>
-                    <Home />
+                    <HomeOutlined sx={{ fontSize: 30 }} />
                 </NavbarItem>
                 <NavbarItem to='/modules/'>
-                    <BladesVertical />
+                    <FormatListBulleted sx={{ fontSize: 30 }} />
                 </NavbarItem>
                 {'user' in cookies && (
-                    <><NavbarItem to='/recommender/'>
-                        <Resources />
+                    <NavbarItem to='/recommender/'>
+                        <AssistantOutlined sx={{ fontSize: 30 }} />
                     </NavbarItem>
+                )}
+                {'user' in cookies && (
                     <NavbarItem to='/user/'>
-                        <User />
-                    </NavbarItem></>
+                        <AccountCircleOutlined sx={{ fontSize: 30 }} />
+                    </NavbarItem>
                 )}
             </Nav>
         </Sidebar>
