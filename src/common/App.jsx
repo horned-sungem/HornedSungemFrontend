@@ -45,7 +45,7 @@ export default function App() {
     }, [cookies])
 
     return (
-        <Main>
+        <Main overflow="hidden">
             <ModuleContext.Provider value={modules}>
                 <VotesContext.Provider value={voteValue}>
                     <Box direction='row' basis='full'>

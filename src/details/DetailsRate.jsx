@@ -10,7 +10,7 @@ export const DetailsRate = ({ module_id }) => {
     const [rating, setRating] = useState(null)
     const { votes, setVotes } = useContext(VotesContext)
     const slash_id = module_id.replace('_', '/')
-    var timeout;
+    const [timeout, setTimeoutState] = useState(null);
 
     useEffect(
         () => {
@@ -44,14 +44,15 @@ export const DetailsRate = ({ module_id }) => {
 
     const updateVote = (rating) => {
         if (rating === null) return;
-        if (rating === 0 && votes.length === 0 ) return;
+        if (votes.length === 0 ) return;
         if (!('user' in cookies)) return;
-        timeout = setTimeout(() => {
+        clearTimeout(timeout);
+        setTimeoutState(setTimeout(() => {
             fetch(Config.url + 'api/vote/', {
                 method: 'POST',
                 credentials: 'include',
                 headers: new Headers({
-                    'Authorization': 'Token '+cookies.user.token,
+                    'Authorization': 'Token ' + cookies.user.token,
                     'Content-Type': 'application/json'
                 }),
                 body: JSON.stringify({
@@ -65,13 +66,10 @@ export const DetailsRate = ({ module_id }) => {
                     setVotes(votes => 
                         rating != 0 ?
                         [...votes.filter(vote => vote[0].nr !== slash_id), [module, parseInt(rating)] ]
-                        : votes.filter(vote => vote[0].rn !== slash_id) )
+                        : votes.filter(vote => vote[0].nr !== slash_id) )
                 }
             )
-        }, 500)
-        return () => {
-            clearTimeout(timeout) // Literally no idea how or why this works but it seems to debounce the rating and keep our backend alive
-        }
+        }, 500))
     }
 
     return (
