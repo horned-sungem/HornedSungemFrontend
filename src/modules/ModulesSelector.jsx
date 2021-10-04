@@ -17,7 +17,7 @@ export const ModulesSelector = ({ setModuleFilter }) => {
     const modules = useContext(ModuleContext)
 
     useEffect(() => {
-        setOptions([...new Set(modules.map(x => x.pagegroup))])
+        if (modules) setOptions([...new Set(modules.map(x => x.pagegroup))])
     }, [modules])
 
     console.log(section)
