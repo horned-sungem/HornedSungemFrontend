@@ -16,7 +16,7 @@ import { VotesContext } from './VotesContext';
 import { useCookies } from 'react-cookie';
 
 export default function App() {
-    const [modules, setModules] = useState([])
+    const [modules, setModules] = useState(null)
     const [cookies] = useCookies(['user'])
 
     const [votes, setVotes] = useState([])

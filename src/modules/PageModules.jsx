@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Box, ResponsiveContext } from 'grommet';
+import { Box, ResponsiveContext, Spinner } from 'grommet';
 import { ModuleContext } from '../common/ModulesContext';
 import { ModulesDescription } from './ModulesDescription';
 import { ModulesList } from './ModulesList';
@@ -15,10 +15,10 @@ export const PageModules = () => {
         <Box direction='row' border='between' gap='small' margin='small' fill='horizontal'>
             <Box flex>
                 <ModulesSelector setModuleFilter={setModuleFilter}/>
-                <ModulesList
+                {modules ? <ModulesList
                     modules={modules.filter(moduleFilter)}
                     setChosenModule={setChosenModule}
-                />
+                /> : <Box fill='vertical' justify='center' alignSelf='center'> <Spinner/> </Box>}
             </Box>
 
             {(chosenModule && ['medium', 'large'].includes(size)) && <ModulesDescription chosenModule={chosenModule} />}
