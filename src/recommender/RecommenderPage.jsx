@@ -26,10 +26,10 @@ export const ReacommenderPage = () => {
         <>
         {'user' in cookies ?
             <Box direction='column' basis='full'>
-                <Box background='brand' pad='small'>
-                    <Heading>Recommended modules for <i>{cookies.user.username}</i></Heading>
+                <Box background='brand' pad='small' style={{flexShrink: "0"}}>
+                    <Heading style={{flexShrink: "0"}}>Recommended modules for <i>{cookies.user.username}</i></Heading>
                 </Box>
-                <Box direction='row'>
+                <Box direction='row' overflow='auto' style={{padding: "1em", boxSizing: "border-box"}}>
                     <Box width='large'>
                         <Grid gap='small' columns='small'>
                             {recommendedModules.map((m, idx) => <ModuleBox module={m} key={idx}/>)}
