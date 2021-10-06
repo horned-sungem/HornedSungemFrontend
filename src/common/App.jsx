@@ -9,7 +9,7 @@ import '../styles/main.sass'
 import { Details } from '../details/Details';
 import { Navbar } from '../navbar/Navbar';
 import { ModuleContext } from './ModulesContext';
-import { ReacommenderPage } from '../recommender/RecommenderPage';
+import { RecommenderPage } from '../recommender/RecommenderPage';
 import Config from './Config';
 import { UserPage } from '../user/UserPage';
 import { VotesContext } from './VotesContext';
@@ -45,7 +45,7 @@ export default function App() {
                             <Switch>
                                 <Route component={PageModules} path='/modules/' />
                                 <Route component={Details} path='/module/:module_id' />
-                                <Route component={ReacommenderPage} path='/recommender/' />
+                                <Route component={RecommenderPage} path='/recommender/' />
                                 <Route component={UserPage} path='/user/' />
                                 <Route component={PageIndex} path='/' />
                             </Switch>

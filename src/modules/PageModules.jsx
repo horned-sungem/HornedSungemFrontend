@@ -1,9 +1,10 @@
 import React, { useContext, useState } from 'react';
-import { Box, ResponsiveContext, Spinner } from 'grommet';
+import { Box, ResponsiveContext } from 'grommet';
 import { ModuleContext } from '../common/ModulesContext';
 import { ModulesDescription } from './ModulesDescription';
 import { ModulesList } from './ModulesList';
 import { ModulesSelector } from './ModulesSelector';
+import { LoadingScreen } from '../common/LoadingScreen';
 
 export const PageModules = () => {
     const [chosenModule, setChosenModule] = useState(null);
@@ -18,7 +19,7 @@ export const PageModules = () => {
                 {modules ? <ModulesList
                     modules={modules.filter(moduleFilter)}
                     setChosenModule={setChosenModule}
-                /> : <Box fill='vertical' justify='center' alignSelf='center'> <Spinner/> </Box>}
+                /> : <LoadingScreen />}
             </Box>
 
             {(chosenModule && ['medium', 'large'].includes(size)) && <ModulesDescription chosenModule={chosenModule} />}
