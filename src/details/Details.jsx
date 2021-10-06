@@ -2,6 +2,7 @@ import { Box, Header } from 'grommet';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import Config from '../common/Config';
+import { getModuleRequest } from '../common/requests';
 import { DetailsInformation } from './DetailsInformation';
 import { DetailsRecommender } from './DetailsRecommender';
 
@@ -11,9 +12,7 @@ export const Details = () => {
     const [loadedModule, setLoadedModule] = useState(null);
 
     useEffect(() => {
-        fetch(Config.url + 'api/module/' + module_id + '/')
-            .then((r) => r.json())
-            .then((r) => setLoadedModule(r));
+        getModuleRequest(module_id).then(r => r.json()).then(setLoadedModule);
     }, [module_id]);
 
     return (

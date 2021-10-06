@@ -2,6 +2,7 @@ import { RangeInput } from 'grommet';
 import React, { useContext, useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
 import Config from '../common/Config';
+import { setVoteRequest } from '../common/requests';
 import { VotesContext } from '../common/VotesContext';
 
 export const DetailsRate = ({ module_id }) => {
@@ -48,27 +49,14 @@ export const DetailsRate = ({ module_id }) => {
         if (!('user' in cookies)) return;
         clearTimeout(timeout);
         setTimeoutState(setTimeout(() => {
-            fetch(Config.url + 'api/vote/', {
-                method: 'POST',
-                credentials: 'include',
-                headers: new Headers({
-                    'Authorization': 'Token ' + cookies.user.token,
-                    'Content-Type': 'application/json'
-                }),
-                body: JSON.stringify({
-                    score: rating,
-                    module: slash_id
-                })
-            })
-            .then(r => r.json())
-            .then(
-                (module) => {
+            setVoteRequest(slash_id, rating)
+                .then(r => r.json())
+                .then(module => {
                     setVotes(votes => 
                         rating != 0 ?
                         [...votes.filter(vote => vote[0].nr !== slash_id), [module, parseInt(rating)] ]
                         : votes.filter(vote => vote[0].nr !== slash_id) )
-                }
-            )
+                })
         }, 500))
     }
 
@@ -79,7 +67,7 @@ export const DetailsRate = ({ module_id }) => {
                 min={-5} 
                 max={5} 
                 value={rating} 
-                onChange={r => {updateVote(r.target.value); setRating(r.target.value)}}/>}
+                onChange={r => {updateVote(parseInt(r.target.value)); setRating(r.target.value)}}/>}
         </>
     );
 }

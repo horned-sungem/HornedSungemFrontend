@@ -1,7 +1,7 @@
 import { Box, Button, Form, FormField, Spinner, TextInput } from 'grommet';
 import React, { useState } from 'react';
 import { useCookies } from 'react-cookie';
-import Config from '../common/Config';
+import { loginRequest } from '../common/requests';
 
 
 export const LoginForm = ({ setError, setLayerOpen }) => {
@@ -15,17 +15,7 @@ export const LoginForm = ({ setError, setLayerOpen }) => {
             onChange={() => {setWrongPassword(false)}}
             onSubmit={formValue => { 
                 setIsLoading(true);
-                fetch(Config.url + 'api/login/',
-                    {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                            username: formValue.value.username,
-                            password: formValue.value.password
-                        })
-                    })
+                loginRequest(formValue.value.username, formValue.value.password)
                     .then(r => r.json())
                     .then(r => {
                         if ('token' in r) {
