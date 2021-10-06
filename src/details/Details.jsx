@@ -1,7 +1,6 @@
 import { Box, Header } from 'grommet';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import Config from '../common/Config';
 import { getModuleRequest } from '../common/requests';
 import { DetailsInformation } from './DetailsInformation';
 import { DetailsRecommender } from './DetailsRecommender';

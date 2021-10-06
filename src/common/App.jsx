@@ -10,7 +10,6 @@ import { Details } from '../details/Details';
 import { Navbar } from '../navbar/Navbar';
 import { ModuleContext } from './ModulesContext';
 import { RecommenderPage } from '../recommender/RecommenderPage';
-import Config from './Config';
 import { UserPage } from '../user/UserPage';
 import { VotesContext } from './VotesContext';
 import { useCookies } from 'react-cookie';

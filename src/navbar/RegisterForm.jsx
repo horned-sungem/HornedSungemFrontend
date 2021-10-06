@@ -1,7 +1,6 @@
 import { Box, Button, Form, FormField, Spinner, TextInput } from 'grommet';
 import React, { useState } from 'react';
 import { useCookies } from 'react-cookie';
-import Config from '../common/Config';
 import { registerRequest } from '../common/requests';
 
 

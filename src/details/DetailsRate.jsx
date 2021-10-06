@@ -1,7 +1,6 @@
 import { RangeInput } from 'grommet';
 import React, { useContext, useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
-import Config from '../common/Config';
 import { setVoteRequest } from '../common/requests';
 import { VotesContext } from '../common/VotesContext';
 
