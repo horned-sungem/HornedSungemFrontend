@@ -1,4 +1,4 @@
-import React, { useContext  } from 'react';
+import React, { useContext, useEffect  } from 'react';
 import { Box } from 'grommet';
 import { useHistory } from 'react-router';
 import { ModulesListEntry } from './ModulesListEntry';
@@ -7,7 +7,7 @@ import { VotesContext } from '../common/VotesContext';
 import './styles/Modules.sass'
 import { Virtuoso } from 'react-virtuoso';
 
-export const ModulesList = (props) => {
+export const ModulesList = ({modules, setChosenModule}) => {
 
     let history = useHistory();
 
@@ -15,12 +15,19 @@ export const ModulesList = (props) => {
 
     const vote_ids = votes.map(vote => vote[0].nr);
 
+    useEffect(() => {
+        if (modules) {
+            setChosenModule(modules[0]);    
+        }
+        
+    }, [])
+
     function module (index) {
-        var module = Object.values(props.modules)[index];
+        var module = Object.values(modules)[index];
         return (
             <Box
                 flex={false}
-                onMouseOver={() => props.setChosenModule(module)}
+                onMouseOver={() => setChosenModule(module)}
                 height={{min: 'xsmall'}}
                 className={'list__item' + (vote_ids.includes(module.nr) ? ' list__item--voted' : '')}
                 justify='center'
@@ -41,7 +48,7 @@ export const ModulesList = (props) => {
     return (
         <Virtuoso 
             height={'full'}
-            totalCount={props.modules.length}
+            totalCount={modules.length}
             itemContent={module}
         />
     );

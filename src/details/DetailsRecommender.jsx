@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
 import { ModuleBox } from '../common/ModuleBox';
 import { ModuleContext } from '../common/ModulesContext';
-import { getSimilarModules } from '../common/requests';
+import { getSimilarModulesRequest } from '../common/requests';
 import { DetailsRate } from './DetailsRate';
 
 export const DetailsRecommender = ({ module_id }) => {
@@ -13,7 +13,7 @@ export const DetailsRecommender = ({ module_id }) => {
 
     useEffect(() => {
         setSimilarModules([]);
-        getSimilarModules(module_id)
+        getSimilarModulesRequest(module_id)
             .then((r) => r.json())
             .then((r) => setSimilarModules(r))
     }, [module_id]);
