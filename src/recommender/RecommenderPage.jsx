@@ -4,7 +4,7 @@ import { useCookies } from 'react-cookie';
 import Config from '../common/Config';
 import { ModuleBox } from '../common/ModuleBox';
 
-export const ReacommenderPage = () => {
+export const RecommenderPage = () => {
 
     const [cookies] = useCookies(['user']);
     const [recommendedModules, setRecommendedModules] = useState([]);
