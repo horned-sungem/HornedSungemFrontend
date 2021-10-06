@@ -1,12 +1,15 @@
 import { Box, Grid, Heading } from 'grommet';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
 import Config from '../common/Config';
+import { LoadingScreen } from '../common/LoadingScreen';
 import { ModuleBox } from '../common/ModuleBox';
+import { ModuleContext } from '../common/ModulesContext';
 
 export const RecommenderPage = () => {
 
     const [cookies] = useCookies(['user']);
+    const modules = useContext(ModuleContext);
     const [recommendedModules, setRecommendedModules] = useState([]);
 
     useEffect(() => {
@@ -24,8 +27,14 @@ export const RecommenderPage = () => {
 
     return (
         <>
-        {'user' in cookies ?
-            <Box direction='column' basis='full'>
+        {!('user' in cookies) ? <Box justify='center' width='full' align='center'>
+                You need to log in to access this resource.
+            </Box>
+        : (modules === null) ?
+            <Box width='full' align='center'>
+                <LoadingScreen />
+            </Box>
+        : <Box direction='column' basis='full'>
                 <Box background='brand' pad='small' style={{flexShrink: "0"}}>
                     <Heading style={{flexShrink: "0"}}>Recommended modules for <i>{cookies.user.username}</i></Heading>
                 </Box>
@@ -39,9 +48,6 @@ export const RecommenderPage = () => {
                         Hier so Details later
                     </Box>
                 </Box>
-            </Box> :
-            <Box justify='center' width='full' align='center'>
-                You need to log in to access this resource.
             </Box>}
         </>
     )
