@@ -14,6 +14,7 @@ import Config from './Config';
 import { UserPage } from '../user/UserPage';
 import { VotesContext } from './VotesContext';
 import { useCookies } from 'react-cookie';
+import { getModulesRequest, getVotesRequest } from './requests';
 
 export default function App() {
     const [modules, setModules] = useState(null)
@@ -23,25 +24,15 @@ export default function App() {
     const voteValue = useMemo(() => ({ votes, setVotes }), [votes, setVotes])
 
     useEffect(() => {
-        fetch(Config.url + 'api/modules/')
-            .then((r) => r.json())
-            .then((r) => setModules(r))
+        getModulesRequest().then(r => r.json()).then(setModules)
     }, [])
 
     useEffect(() => {
         if (!('user' in cookies)) {
-            setVotes([])
+            setVotes([]);
             return;
         }
-        fetch(Config.url + 'api/votes/', {
-            credentials: 'include',
-            headers: new Headers({
-                'Authorization': 'Token '+cookies.user.token,
-                'Content-Type': 'application/json'
-            })
-        })
-        .then(r => r.json())
-        .then(setVotes)
+        getVotesRequest().then(r => r.json()).then(setVotes)
     }, [cookies])
 
     return (

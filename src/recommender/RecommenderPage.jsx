@@ -1,8 +1,8 @@
 import { Box, Grid, Heading } from 'grommet';
 import React, { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
-import Config from '../common/Config';
 import { ModuleBox } from '../common/ModuleBox';
+import { getRecommendsRequest } from '../common/requests';
 
 export const ReacommenderPage = () => {
 
@@ -11,15 +11,9 @@ export const ReacommenderPage = () => {
 
     useEffect(() => {
         if (!('user' in cookies)) return;
-        fetch(Config.url + 'api/recommend/', {
-            credentials: 'include',
-            headers: new Headers({
-                'Authorization': 'Token '+cookies.user.token,
-                'Content-Type': 'application/json'
-            })
-        })
-        .then(r => r.json())
-        .then(setRecommendedModules)
+        getRecommendsRequest()
+            .then(r => r.json())
+            .then(setRecommendedModules)
     }, [cookies])
 
     return (

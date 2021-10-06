@@ -2,6 +2,7 @@ import { Box, Button, Form, FormField, Spinner, TextInput } from 'grommet';
 import React, { useState } from 'react';
 import { useCookies } from 'react-cookie';
 import Config from '../common/Config';
+import { registerRequest } from '../common/requests';
 
 
 export const RegisterForm = ({ setLayerOpen }) => {
@@ -17,32 +18,22 @@ export const RegisterForm = ({ setLayerOpen }) => {
             onSubmit={formValue => { 
                 if (form.password1 !== form.password2) return;
                 setIsLoading(true);
-                fetch(Config.url + 'api/register/',
-                    {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                            username: formValue.value.username_reg,
-                            password: formValue.value.password1
-                        })
-                    })
+                registerRequest(formValue.value.username_register, formValue.value.password1)
                     .then(r => r.json())
                     .then(r => {
-                                if ('token' in r) {
-                                    setCookies('user', ({
-                                        username: formValue.value.username,
-                                        token: r.token
-                                    }), {
-                                        maxAge: 60*60*24*7,
-                                        secure: true
-                                    });
-                                    setLayerOpen(false);
-                                } else {
-                                    console.log('This shouldn\'t happen')
-                                }
-                            })
+                            if ('token' in r) {
+                                setCookies('user', ({
+                                    username: formValue.value.username,
+                                    token: r.token
+                                }), {
+                                    maxAge: 60*60*24*7,
+                                    secure: true
+                                });
+                                setLayerOpen(false);
+                            } else {
+                                console.log('This shouldn\'t happen')
+                            }
+                        })
                     
                     .catch(() => {
                         setDuplicateUsername(true)
