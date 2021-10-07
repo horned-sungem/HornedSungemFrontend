@@ -8,7 +8,7 @@ export const request = (url: string, method='GET', body=null): Promise<Response>
     return fetch(Config.url + url, {
         credentials: 'include',
         headers: new Headers({
-            'Authorization': 'Token '+cookies.get('user').token,
+            'Authorization': 'Token '+cookies.get('user')?.token,
             'Content-Type': 'application/json'
             
         }),
