@@ -17,12 +17,12 @@ export const RegisterForm = ({ setLayerOpen }) => {
             onSubmit={formValue => { 
                 if (form.password1 !== form.password2) return;
                 setIsLoading(true);
-                registerRequest(formValue.value.username_register, formValue.value.password1)
+                registerRequest(form.username_reg, form.password1)
                     .then(r => r.json())
                     .then(r => {
                             if ('token' in r) {
                                 setCookies('user', ({
-                                    username: formValue.value.username,
+                                    username: form.username_reg,
                                     token: r.token
                                 }), {
                                     maxAge: 60*60*24*7,
