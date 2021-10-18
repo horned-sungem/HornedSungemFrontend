@@ -29,7 +29,7 @@ export const setVoteRequest = (module_id: string, score: number) => (request('ap
     score: score
 }));
 
-export const loginRequest = (username: string, password: string) => (request('api-token-auth/', 'POST', {
+export const loginRequest = (username: string, password: string) => (request('api/login/', 'POST', {
     username: username,
     password: password
 }));
